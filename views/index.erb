@@ -1,35 +1,115 @@
-<section class="relative isolate">
+<div class="page-wrapper">
+  <h1>Rack & Rail Grid Plugin</h1>
+  <p>A responsive grid system with two container types: <strong>Rack</strong> (end-to-end col- that wrap) and <strong>Rail</strong> (horizontally scrollable rows).</p>
+</div>
+
+<section>
   <div class="page-wrapper">
-    <div class="rack py-20">
-      <div class="col-7">
-        <h1 class="border rack text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Sinatra Starter + PSP Layout</h1>
-        <p class="mt-6 text-lg text-gray-600">Tailwind v4 (CLI) + PSP Layout plugin for Rack (grid) and Rail (horizontal) layouts.</p>
-        <div class="mt-8 flex gap-3">
-          <a href="https://tailwindcss.com/docs" target="_blank" rel="noopener" class="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">Tailwind Docs</a>
-          <a href="https://sinatrarb.com/intro.html" target="_blank" rel="noopener" class="inline-flex items-center rounded-md bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800">Sinatra Docs</a>
-        </div>
-      </div>
-      <div class="col-5">
-        <div class="rounded-2xl bg-gray-50 p-6 ring-1 ring-gray-200">
-          <div class="aspect-[16/10] w-full rounded-xl bg-gradient-to-br from-gray-100 to-gray-200"></div>
-        </div>
+    <h2>Column Width Demo</h2>
+    <div class="toggle-container">
+      <input type="radio" name="container-type" id="rack-toggle" checked>
+      <input type="radio" name="container-type" id="rail-toggle">
+      <div class="toggle-switch">
+        <label for="rack-toggle" class="rack-label">Rack Container</label>
+        <label for="rail-toggle" class="rail-label">Rail Container</label>
       </div>
     </div>
 
-    <div class="rack gap-6 pb-12">
-      <div class="col-4"><div class="h-24 rounded-lg bg-emerald-100"></div></div>
-      <div class="col-4"><div class="h-24 rounded-lg bg-emerald-100"></div></div>
-      <div class="col-4"><div class="h-24 rounded-lg bg-emerald-100"></div></div>
+    <div id="rack-code-block" class="code-block">
+      <pre>&lt;div class="rack"&gt;
+  &lt;div class="col-1"&gt;col-1&lt;/div&gt;
+  &lt;div class="col-2"&gt;col-2&lt;/div&gt;
+  &lt;div class="col-3"&gt;col-3&lt;/div&gt;
+  &lt;div class="col-4"&gt;col-4&lt;/div&gt;
+  ...
+&lt;/div&gt;</pre>
     </div>
 
-    <div class="rail rail-standard py-8">
-      <div class="col-3"><div class="h-40 rounded-xl bg-sky-100"></div></div>
-      <div class="col-3"><div class="h-40 rounded-xl bg-sky-100"></div></div>
-      <div class="col-3"><div class="h-40 rounded-xl bg-sky-100"></div></div>
-      <div class="col-3"><div class="h-40 rounded-xl bg-sky-100"></div></div>
-      <div class="col-3"><div class="h-40 rounded-xl bg-sky-100"></div></div>
+    <div id="rail-code-block" class="code-block" style="display: none;">
+      <pre>&lt;div class="rail"&gt;
+  &lt;div class="col-1"&gt;col-1&lt;/div&gt;
+  &lt;div class="col-2"&gt;col-2&lt;/div&gt;
+  &lt;div class="col-3"&gt;col-3&lt;/div&gt;
+  &lt;div class="col-4"&gt;col-4&lt;/div&gt;
+  ...
+&lt;/div&gt;</pre>
     </div>
+  </div>
+
+  <div class="rack text-gray-900">
+    <% (1..12).each do |i| %>
+      <div class="col-<%= i %>">
+        <strong>col-<%= i %></strong> <span id="col-<%= i %>-info">Loading...</span>
+      </div>
+    <% end %>
   </div>
 </section>
 
+<section>
+  <div class="page-wrapper">
+    <h2>Responsive col- Example (Rack Container Only)</h2>
+    <p>These col- automatically adjust their width according to the breakpoint without needing explicit classes for each viewport. Note how shorter col- can inline with longer ones depending on the viewport size.</p>
+  </div>
 
+  <div class="rack">
+    <%
+      # Define responsive demo layout pattern
+      demo_cols = [
+        [2, 8, 2],
+        [12],
+        [6, 6],
+        [4, 4, 4],
+        [3, 3, 3, 3],
+        [8, 4],
+        [9, 3],
+        [2, 10],
+        [3, 6, 3],
+        [2, 4, 6],
+        [2, 4],
+        [1, 6, 2, 3]
+      ]
+      
+      col_counter = { 1 => 1, 2 => 1, 3 => 1, 4 => 1, 5 => 1, 6 => 1, 7 => 1, 8 => 1, 9 => 1, 10 => 1, 11 => 1, 12 => 1 }
+    %>
+    
+    <% demo_cols.each do |row| %>
+      <% row.each do |col_size| %>
+        <div class="col-<%= col_size %>">
+          <strong>col-<%= col_size %></strong> 
+          <span id="responsive-col-<%= col_size %>-info-<%= col_counter[col_size] %>">Loading...</span>
+          <% if col_size == 8 && col_counter[8] == 1 %>
+            <ul id="link-listing" class="flex flex-row">
+              <% (1..5).each { |i| %><li>link <%= i %></li><% } %>
+            </ul>
+          <% end %>
+        </div>
+        <% col_counter[col_size] += 1 %>
+      <% end %>
+    <% end %>
+  </div>
+</section>
+
+<section>
+  <div class="page-wrapper">
+    <h2>Complementary Offset Examples</h2>
+    <p>Demonstration of how offsets interact with complementary col-sizes (offset + col-= 12)</p>
+    <p>Each example shows how different offset values create centered positioning for the col-. The offset applies half of the calculated margin to the left, visually centering the column with remaining space appearing on the right.</p>
+  </div>
+
+  <div class="offset-demo">
+    <div class="rack">
+      <div class="col-12">
+        <strong>offset-0 + col-12</strong>
+        <div><span>No offset (0%) + Full width col-(100%)</span></div>
+      </div>
+
+      <% (1..11).each do |offset| %>
+        <% col_size = 12 - offset %>
+        <div class="col-<%= col_size %> offset-<%= offset %>">
+          <strong>offset-<%= offset %> + col-<%= col_size %></strong> - 
+          <span id="offset-<%= offset %>-info" data-offset="<%= offset %>">Loading...</span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

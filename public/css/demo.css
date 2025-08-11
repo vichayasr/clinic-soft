@@ -1,0 +1,294 @@
+/* 
+ * Demo Styles for Rack & Rail Grid System
+ * Contains ONLY visual styling for demo page - no grid system logic
+ * Grid system classes (.rack, .rail, .col-, .offset) handle width/layout only
+ * 
+ * This file can be safely removed when not using the demo page.
+ */
+
+/* ================================
+   BASE STYLES
+   ================================ */
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1f2937;
+  margin: 0;
+  min-width: 320px;
+  padding-top: 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  line-height: 1.6;
+}
+
+/* Add subtle background pattern */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(139, 92, 246, 0.05) 1px, transparent 0);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.page-wrapper {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1.25rem;
+  box-sizing: border-box;
+}
+
+/* Modern Typography */
+h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  color: #000000;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 3rem;
+  height: 3px;
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  border-radius: 2px;
+}
+
+/* Responsive typography */
+@media (max-width: 48rem) {
+  h1 {
+    font-size: 2.25rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+}
+
+section {
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 2.5rem;
+}
+
+/* ================================
+   DEMO UI CONTROLS
+   ================================ */
+.toggle-container {
+  margin-bottom: 1.25rem;
+}
+
+.toggle-switch {
+  display: flex;
+  margin-bottom: 1.25rem;
+  max-width: 18.75rem;
+}
+
+.toggle-switch label {
+  flex: 1;
+  text-align: center;
+  padding: 0.625rem;
+  background-color: #e2e8f0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  user-select: none;
+}
+
+.toggle-switch label:first-child {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.toggle-switch label:last-child {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+#rack-toggle:checked ~ .toggle-switch .rack-label {
+  background-color: #8b5cf6;
+  color: white;
+}
+
+#rail-toggle:checked ~ .toggle-switch .rail-label {
+  background-color: #2d6edf;
+  color: white;
+}
+
+/* ================================
+   COLUMN DEMO STYLING
+   ================================ */
+
+/* Base visual styling for all demo columns */
+.rack > [class*="col-"],
+.rail > [class*="col-"] {
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Default padding when no Tailwind utilities present */
+.rack > [class*="col-"]:not([class*="p-"]):not([class*="py-"]):not([class*="px-"]):not([class*="pt-"]):not([class*="pb-"]):not([class*="pl-"]):not([class*="pr-"]),
+.rail > [class*="col-"]:not([class*="p-"]):not([class*="py-"]):not([class*="px-"]):not([class*="pt-"]):not([class*="pb-"]):not([class*="pl-"]):not([class*="pr-"]) {
+  padding: 0.625rem;
+}
+
+/* Color schemes */
+.rack > [class*="col-"] {
+  background-color: #f3e8ff;
+  border: 1px solid #d8b4fe;
+}
+
+.rail > [class*="col-"] {
+  background-color: #dbeafe;
+  border: 1px solid #60a5fa;
+}
+
+/* Content styling */
+.rack > [class*="col-"] > span {
+  font-size: 0.875rem;
+  color: #6b21a8;
+}
+
+.rail > [class*="col-"] > span {
+  font-size: 0.875rem;
+  color: #1e40af;
+}
+
+
+/* ================================
+   OFFSET DEMO SECTION
+   ================================ */
+.offset-demo .rack {
+  margin-bottom: 0.625rem;
+}
+
+.offset-demo .rack > [class*="col-"] {
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+
+/* ================================
+   INFORMATIONAL SECTIONS
+   ================================ */
+.formulas {
+  background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+.formulas::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.formulas ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.formulas li {
+  margin-bottom: 0.625rem;
+  font-family: monospace;
+  font-size: 0.875rem;
+}
+
+/* Enhanced Code Blocks */
+.code-block {
+  background: linear-gradient(145deg, #1e293b, #334155);
+  color: #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  position: relative;
+  border: 1px solid #475569;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.code-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.code-block pre {
+  margin: 0;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #f1f5f9;
+}
+
+
+.code-block pre::selection {
+  background: rgba(139, 92, 246, 0.3);
+}
+
+
+
+
+/* ================================
+   RESPONSIVE BEHAVIOR
+   ================================ */
+@media (max-width: 30rem) {
+  .toggle-switch {
+    flex-direction: column;
+  }
+
+  .toggle-switch label {
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+  }
+}
