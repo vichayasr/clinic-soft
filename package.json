@@ -1,0 +1,13 @@
+{
+  "name": "sinatra-template",
+  "private": true,
+  "scripts": {
+    "tailwind:dev": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/app.css --watch",
+    "tailwind:build": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/app.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "tailwindcss": "^4.1.11"
+  }
+}
+

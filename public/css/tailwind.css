@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Global base styles */
+html { font-family: var(--font-sans); }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color: rgb(31 41 55); }
+
+

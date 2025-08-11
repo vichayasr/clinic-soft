@@ -1,0 +1,484 @@
+/* 
+ * Debug styles for the Rack & Rail Grid System
+ * These styles are meant to be used with debug-mode.js for visualization of grid layouts
+ */
+
+/* Viewport information display - moved to demo.css for enhanced controls */
+
+/* Debug Container */
+.debug-container {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* Debug Toggle styles */
+.debug-toggle-container {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.debug-toggle-label {
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #e2e8f0;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  height: 32px;
+  box-sizing: border-box;
+  /* Prevent text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body.debug-mode .debug-toggle-label {
+  background-color: #f97316;
+  color: white;
+}
+
+.debug-toggle-container input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Viewport Controls */
+.viewport-container {
+  display: none;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+  min-width: 80px;
+}
+
+body.debug-mode .viewport-container.debug-only {
+  display: flex;
+}
+
+.viewport-input {
+  width: 120px;
+  height: 32px;
+  padding: 4px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-sizing: border-box;
+  /* Prevent text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.viewport-input:hover {
+  border-color: #9ca3af;
+}
+
+.viewport-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+/* Dropdown Menu */
+.viewport-dropdown-menu {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  min-width: 210px;
+  margin-bottom: 4px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.2s ease;
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+  /* Prevent text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.viewport-dropdown-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.viewport-option {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #374151;
+}
+
+.viewport-option.default-option {
+  color: #374151;
+}
+
+.viewport-legend-header {
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  /* Prevent text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.viewport-breakpoint-item {
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #f3f4f6;
+  /* Prevent text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.viewport-breakpoint-item:last-child {
+  border-bottom: none;
+}
+
+.breakpoint-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  min-width: 24px;
+  /* Prevent text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* xs merged into sm */
+/* sm now includes xs range (0-767px) */
+.breakpoint-badge.sm {
+  background-color: #f3f4f6;
+  color: #a6a8aa;
+}
+
+/* sm now includes xs range (0-767px) */
+.breakpoint-badge.sm {
+  background-color: #e5e7eb;
+  color: #4b5563;
+}
+
+.breakpoint-badge.md {
+  background-color: #93c5fd;
+  color: #1e40af;
+}
+
+.breakpoint-badge.lg {
+  background-color: #a7f3d0;
+  color: #065f46;
+}
+
+.breakpoint-badge.xl {
+  background-color: #fde68a;
+  color: #92400e;
+}
+
+/* Viewport input with color coding */
+
+/* sm now includes xs range (0-767px) */
+.viewport-input.sm {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+  color: #4b5563;
+}
+
+.viewport-input.md {
+  background-color: #dbeafe;
+  border-color: #60a5fa;
+  color: #1e40af;
+}
+
+.viewport-input.lg {
+  background-color: #d1fae5;
+  border-color: #34d399;
+  color: #065f46;
+}
+
+.viewport-input.xl {
+  background-color: #fef3c7;
+  border-color: #fbbf24;
+  color: #92400e;
+}
+
+/* Debug mode rack and rail outlines - positioned inside to avoid overlap between adjacent containers */
+.debug-mode .rack {
+  outline: 2px dashed #0ea5e9; /* Blue dashed outline for rack */
+  outline-offset: -2px; /* Inside the container to prevent overlap when containers are adjacent */
+  position: relative;
+}
+
+.debug-mode .rail {
+  outline: 2px dashed #8b5cf6; /* Purple dashed outline for rail */
+  outline-offset: -2px; /* Inside the container to prevent overlap when containers are adjacent */
+  position: relative;
+}
+
+/* Show content-box names with responsive width indicators */
+.debug-mode .rack::after {
+  content: "rack";
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #0ea5e9;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  z-index: 1;
+}
+
+.debug-mode .rail::after {
+  content: "rail";
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #8b5cf6;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  z-index: 1;
+}
+
+/* Responsive viewport width indicators */
+@media (min-width: 20rem) { /* 320px */
+  .debug-mode .rack::after {
+    content: "rack (320px)";
+  }
+  
+  .debug-mode .rail::after {
+    content: "rail (320px)";
+  }
+}
+
+@media (min-width: 23.4375rem) { /* 375px */
+  .debug-mode .rack::after {
+    content: "rack (375px)";
+  }
+  
+  .debug-mode .rail::after {
+    content: "rail (375px)";
+  }
+}
+
+@media (min-width: 30rem) { /* 480px */
+  .debug-mode .rack::after {
+    content: "rack (480px)";
+  }
+  
+  .debug-mode .rail::after {
+    content: "rail (480px)";
+  }
+}
+
+@media (min-width: 43.125rem) { /* 690px */
+  .debug-mode .rack::after {
+    content: "rack (690px)";
+  }
+  
+  .debug-mode .rail::after {
+    content: "rail (690px)";
+  }
+}
+
+@media (min-width: 48rem) { /* 768px */
+  .debug-mode .rack::after {
+    content: "rack (768px)";
+  }
+  
+  .debug-mode .rail::after {
+    content: "rail (768px)";
+  }
+}
+
+@media (min-width: 64rem) { /* 1024px */
+  .debug-mode .rack::after {
+    content: "rack (1024px)";
+  }
+  
+  .debug-mode .rail::after {
+    content: "rail (1024px)";
+  }
+}
+
+@media (min-width: 86rem) { /* 1376px */
+  .debug-mode .rack::after {
+    content: "rack (1376px)";
+  }
+  
+  .debug-mode .rail::after {
+    content: "rail (1376px)";
+  }
+}
+
+@media (min-width: 90rem) { /* 1440px */
+  .debug-mode .rack::after {
+    content: "rack (1440px)";
+  }
+  
+  .debug-mode .rail::after {
+    content: "rail (1440px)";
+  }
+}
+
+@media (min-width: 108.5rem) { /* 1736px */
+  .debug-mode .rack::after {
+    content: "rack (1736px)";
+  }
+  
+  .debug-mode .rail::after {
+    content: "rail (1736px)";
+  }
+}
+
+@media (min-width: 120rem) { /* 1920px */
+  .debug-mode .rack::after {
+    content: "rack (1920px)";
+  }
+  
+  .debug-mode .rail::after {
+    content: "rail (1920px)";
+  }
+}
+
+/* Enhanced debug for rail scrollable containers */
+.debug-mode .rail::after {
+  content: "rail (scrollable →)";
+  color: #8b5cf6;
+}
+
+/* Debug mode column styling - positioned inside to avoid overlap with container territory lines */
+.debug-mode .rack > [class*="col-"],
+.debug-mode .rail > [class*="col-"] {
+  outline: 2px dashed #b8bcc3; /* 2px for better visibility, 10% darker than #d1d5db */
+  outline-offset: -2px; /* Inside the column to avoid overlapping with container territory lines */
+}
+
+/* Show column class names - COMMENTED OUT */
+/*
+.debug-mode .rack > [class*="col-"]::after,
+.debug-mode .rail > [class*="col-"]::after {
+  content: attr(class);
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  pointer-events: none;
+  z-index: 2;
+  white-space: nowrap;
+  max-width: none;
+}
+*/
+
+/* Inspector tooltip */
+.debug-inspector-tooltip {
+  position: absolute;
+  background-color: rgba(15, 23, 42, 0.9); /* Darker background for better visibility */
+  color: white;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 10000;
+  max-width: 320px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  display: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  backdrop-filter: blur(4px); /* Add blur effect for better readability */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+}
+
+.tooltip-tag {
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: #93c5fd; /* Blue color for tag */
+}
+
+.tooltip-id {
+  margin-bottom: 4px;
+  color: #fde68a; /* Yellow color for ID */
+}
+
+.tooltip-classes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.tooltip-class {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  color: #a7f3d0; /* Green color for classes */
+}
+
+.tooltip-dimensions {
+  color: #c4b5fd; /* Purple color for dimensions */
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+/* Highlight element being inspected */
+.debug-inspected-element {
+  outline: 2px solid #8b5cf6 !important; /* Purple outline */
+  outline-offset: -2px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.3) !important; /* Add a subtle glow */
+}
+
+/* Inspector mode cursor */
+body.debug-inspector-active * {
+  cursor: crosshair !important;
+}
