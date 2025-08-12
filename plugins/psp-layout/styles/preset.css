@@ -116,8 +116,8 @@
   .rack .offset-7  { grid-column-start: 8; }
   .rack .offset-8  { grid-column-start: 9; }
   .rack .offset-9  { grid-column-start: 10; }
-  .rack .offset-10 { grid-column-start: 10; }
-  .rack .offset-11 { grid-column-start: 10; }
+  .rack .offset-10 { grid-column-start: 11; }
+  .rack .offset-11 { grid-column-start: 12; }
 
   /* Demo-only placement helpers moved to public/css/demo.css */
 }

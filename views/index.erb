@@ -1,9 +1,10 @@
 <%# Page asset config now set in app.rb %>
 
-<div class="page-wrapper">
+<div class="demo-scope">
+  <div class="page-wrapper">
   <h1>Rack & Rail Grid Plugin</h1>
   <p>A responsive grid system with two container types: <strong>Rack</strong> (end-to-end col- that wrap) and <strong>Rail</strong> (horizontally scrollable rows).</p>
-</div>
+  </div>
 
 <section>
   <div class="page-wrapper">
@@ -26,17 +27,16 @@
       </div>
     <% end %>
   </div>
-</section>
+  </section>
 
-<section>
+  <section>
   <div class="page-wrapper">
     <h2>Offset row test</h2>
     <p>Check if <code>.offset-2.col-2</code> and <code>.col-8</code> sit on the same row.</p>
   </div>
-  <div class="rack">
+  <div class="rack offset-row-test">
     <div class="col-2 offset-2"><strong>offset-2 + col-2</strong></div>
-    <div class="col-4"><strong>col-4</strong></div>
-    <div class="col-4"><strong>col-4</strong></div>
+    <div class="col-8"><strong>col-8</strong></div>
   
     <div class="col-2 offset-1"><strong>offset-1 + col-2</strong></div>
     <div class="col-9"><strong>col-9</strong></div>
@@ -62,9 +62,9 @@
     <div class="col-2 offset-6"><strong>offset-6 + col-2</strong></div>
     <div class="col-4"><strong>col-4</strong></div>
   </div>
-</section>
+  </section>
 
-<section>
+  <section>
   <div class="page-wrapper">
     <h2>Responsive col- Example (Rack Container Only)</h2>
   </div>
@@ -99,9 +99,9 @@
       <% end %>
     <% end %>
   </div>
-</section>
+  </section>
 
-<section>
+  <section>
   <div class="page-wrapper">
     <h2>Complementary Offset Examples</h2>
     <p>Demonstration of how offsets interact with complementary col-sizes (offset + col-= 12)</p>
@@ -123,6 +123,8 @@
       <% end %>
     </div>
   </div>
-</section>
+  </section>
+
+</div>
 
 <!-- Offset comparison section removed per request -->
