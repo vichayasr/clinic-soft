@@ -202,6 +202,70 @@ input[type="radio"] {
   gap: 0.5rem;
 }
 
+/* Comparison demo helpers (lg only for clarity) */
+@media (min-width: 64rem) {
+  /* Approach A: temporarily make element span full row and apply width + ml */
+  .span-override-demo {
+    grid-column: 1 / -1 !important;
+    box-sizing: border-box;
+  }
+  .span-override-demo[data-col="11"] { width: calc((100% + var(--tw-layout-gap)) * 11 / 12 - var(--tw-layout-gap)); }
+  .span-override-demo[data-col="10"] { width: calc((100% + var(--tw-layout-gap)) * 10 / 12 - var(--tw-layout-gap)); }
+  .span-override-demo[data-col="9"]  { width: calc((100% + var(--tw-layout-gap)) * 9  / 12 - var(--tw-layout-gap)); }
+  .span-override-demo[data-col="8"]  { width: calc((100% + var(--tw-layout-gap)) * 8  / 12 - var(--tw-layout-gap)); }
+  .span-override-demo[data-col="7"]  { width: calc((100% + var(--tw-layout-gap)) * 7  / 12 - var(--tw-layout-gap)); }
+  .span-override-demo[data-col="6"]  { width: calc((100% + var(--tw-layout-gap)) * 6  / 12 - var(--tw-layout-gap)); }
+  .span-override-demo[data-col="5"]  { width: calc((100% + var(--tw-layout-gap)) * 5  / 12 - var(--tw-layout-gap)); }
+  .span-override-demo[data-col="4"]  { width: calc((100% + var(--tw-layout-gap)) * 4  / 12 - var(--tw-layout-gap)); }
+  .span-override-demo[data-col="3"]  { width: calc((100% + var(--tw-layout-gap)) * 3  / 12 - var(--tw-layout-gap)); }
+  .span-override-demo[data-col="2"]  { width: calc((100% + var(--tw-layout-gap)) * 2  / 12 - var(--tw-layout-gap)); }
+  .span-override-demo[data-col="1"]  { width: calc((100% + var(--tw-layout-gap)) * 1  / 12 - var(--tw-layout-gap)); }
+  .span-override-demo[data-offset="1"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 1  / 24); }
+  .span-override-demo[data-offset="2"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 2  / 24); }
+  .span-override-demo[data-offset="3"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 3  / 24); }
+  .span-override-demo[data-offset="4"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 4  / 24); }
+  .span-override-demo[data-offset="5"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 5  / 24); }
+  .span-override-demo[data-offset="6"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 6  / 24); }
+  .span-override-demo[data-offset="7"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 7  / 24); }
+  .span-override-demo[data-offset="8"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 8  / 24); }
+  .span-override-demo[data-offset="9"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 9  / 24); }
+  .span-override-demo[data-offset="10"] { margin-left: calc((100% + var(--tw-layout-gap)) * 10 / 24); }
+  .span-override-demo[data-offset="11"] { margin-left: calc((100% + var(--tw-layout-gap)) * 11 / 24); }
+}
+
+/* Approach B: inner wrapper centered by width + left margin */
+@media (min-width: 64rem) {
+  .offset-inner { box-sizing: border-box; }
+  .offset-inner[data-col="11"] { width: calc((100% + var(--tw-layout-gap)) * 11 / 12 - var(--tw-layout-gap)); }
+  .offset-inner[data-col="10"] { width: calc((100% + var(--tw-layout-gap)) * 10 / 12 - var(--tw-layout-gap)); }
+  .offset-inner[data-col="9"]  { width: calc((100% + var(--tw-layout-gap)) * 9  / 12 - var(--tw-layout-gap)); }
+  .offset-inner[data-col="8"]  { width: calc((100% + var(--tw-layout-gap)) * 8  / 12 - var(--tw-layout-gap)); }
+  .offset-inner[data-col="7"]  { width: calc((100% + var(--tw-layout-gap)) * 7  / 12 - var(--tw-layout-gap)); }
+  .offset-inner[data-col="6"]  { width: calc((100% + var(--tw-layout-gap)) * 6  / 12 - var(--tw-layout-gap)); }
+  .offset-inner[data-col="5"]  { width: calc((100% + var(--tw-layout-gap)) * 5  / 12 - var(--tw-layout-gap)); }
+  .offset-inner[data-col="4"]  { width: calc((100% + var(--tw-layout-gap)) * 4  / 12 - var(--tw-layout-gap)); }
+  .offset-inner[data-col="3"]  { width: calc((100% + var(--tw-layout-gap)) * 3  / 12 - var(--tw-layout-gap)); }
+  .offset-inner[data-col="2"]  { width: calc((100% + var(--tw-layout-gap)) * 2  / 12 - var(--tw-layout-gap)); }
+  .offset-inner[data-col="1"]  { width: calc((100% + var(--tw-layout-gap)) * 1  / 12 - var(--tw-layout-gap)); }
+
+  /* left margin = (100% + gap) * offset/24 */
+  .offset-inner[data-offset="1"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 1  / 24); }
+  .offset-inner[data-offset="2"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 2  / 24); }
+  .offset-inner[data-offset="3"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 3  / 24); }
+  .offset-inner[data-offset="4"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 4  / 24); }
+  .offset-inner[data-offset="5"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 5  / 24); }
+  .offset-inner[data-offset="6"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 6  / 24); }
+  .offset-inner[data-offset="7"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 7  / 24); }
+  .offset-inner[data-offset="8"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 8  / 24); }
+  .offset-inner[data-offset="9"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 9  / 24); }
+  .offset-inner[data-offset="10"] { margin-left: calc((100% + var(--tw-layout-gap)) * 10 / 24); }
+  .offset-inner[data-offset="11"] { margin-left: calc((100% + var(--tw-layout-gap)) * 11 / 24); }
+}
+
+/* Approach A sm special-cases: keep native width (50%), only add left margin */
+.span-override-demo[data-offset="10"][data-col="2"] { margin-left: 12.5%; }
+.span-override-demo[data-offset="11"][data-col="1"] { margin-left: 12.5%; }
+
 
 /* ================================
    INFORMATIONAL SECTIONS

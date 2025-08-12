@@ -136,23 +136,6 @@ function generateColumnClasses(breakpoint) {
     };
   });
 
-  // Offset classes (.offset-{n}) - Faux centering using margin-left only
-  // Formula per breakpoint b and offset k:
-  // n = 12 - k; r = min(1, span_b(n) / 12); ml = max(0, (1 - r) / 2) * 100%
-  for (let k = 0; k <= 11; k += 1) {
-    const n = 12 - k;
-    const spanDef = RACK_COLUMNS[breakpoint] && RACK_COLUMNS[breakpoint][n] ? RACK_COLUMNS[breakpoint][n] : 'span 12';
-    const match = String(spanDef).match(/(\d+)/);
-    const spanUnits = match ? parseInt(match[1], 10) : 12;
-    const ratio = Math.min(1, spanUnits / 12);
-    const ml = Math.max(0, (1 - ratio) / 2) * 100;
-    // format to 3 decimals without trailing zeros
-    const mlString = `${parseFloat(ml.toFixed(3))}%`;
-    classes[`.offset-${k}`] = {
-      marginLeft: mlString,
-    };
-  }
-
   // Page wrapper max-width
   classes['.page-wrapper'] = {
     maxWidth: 'var(--tw-layout-max-width)',
@@ -259,9 +242,7 @@ module.exports = plugin(function({ addBase, addComponents, addUtilities, theme }
       },
     });
     
-    addUtilities({
-      '.__psp_layout_plugin_loaded': { display: 'none' },
-    });
+    // No offset utilities exported while offsets are being redesigned
     console.log('PSP Layout Plugin v1.0.0: Successfully initialized');
     
   } catch (error) {

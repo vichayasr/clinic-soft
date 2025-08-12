@@ -232,14 +232,14 @@ function updateColumnInfo() {
     const widthInPx = parseInt(computedWidth);
     
     if (containerType === 'rack') {
-      // For rack columns, show percentage and actual measurements
-      const percentageValue = RACK_COLUMNS[breakpoint] && RACK_COLUMNS[breakpoint][columnSize] 
-        ? RACK_COLUMNS[breakpoint][columnSize] 
-        : 'auto';
-      
+      // For rack columns, compute percentage dynamically from container inner width
+      const containerStyle = window.getComputedStyle(firstContainer);
+      const pl = parseFloat(containerStyle.paddingLeft) || 0;
+      const pr = parseFloat(containerStyle.paddingRight) || 0;
+      const innerWidth = firstContainer.clientWidth - pl - pr;
+      const percentValue = innerWidth > 0 ? ((widthInPx / innerWidth) * 100).toFixed(2) + '%' : 'auto';
       const remValue = (widthInPx / 16).toFixed(2) + 'rem';
-      
-      infoElement.innerHTML = `${percentageValue} / ${formatPx(widthInPx)} / ${remValue}`;
+      infoElement.innerHTML = `${percentValue} / ${formatPx(widthInPx)} / ${remValue}`;
     } else {
       // For rail columns, show fixed width
       const fixedWidth = RAIL_COLUMNS[breakpoint] && RAIL_COLUMNS[breakpoint][columnSize]
@@ -261,16 +261,38 @@ function updateOffsetInfo() {
     const infoElement = document.getElementById(`offset-${offsetNum}-info`);
     if (!infoElement) continue;
     
-    // Get offset value from configuration
+    // For lg/xl with 24-track grid, show grid-start and dynamic column width
+    if (breakpoint === 'lg' || breakpoint === 'xl') {
+      const demoItem = infoElement.closest('[class*="offset-"]');
+      const start = demoItem ? window.getComputedStyle(demoItem).gridColumnStart : 'auto';
+      const colNumber = 12 - offsetNum;
+      // Find the column element for width calculation (this span sits inside it)
+      const columnElement = infoElement.closest(`.col-${colNumber}`);
+      let percentValue = 'auto';
+      let pxValue = '';
+      if (columnElement) {
+        const computedWidth = window.getComputedStyle(columnElement).width;
+        const widthInPx = parseInt(computedWidth);
+        const rack = columnElement.closest('.rack');
+        if (rack) {
+          const rs = window.getComputedStyle(rack);
+          const pl = parseFloat(rs.paddingLeft) || 0;
+          const pr = parseFloat(rs.paddingRight) || 0;
+          const inner = rack.clientWidth - pl - pr;
+          percentValue = inner > 0 ? ((widthInPx / inner) * 100).toFixed(2) + '%' : 'auto';
+          pxValue = formatPx(widthInPx);
+        }
+      }
+      infoElement.innerHTML = `start ${start} + col-${colNumber} (${percentValue} / ${pxValue})`;
+      continue;
+    }
+
+    // For sm/md retain percentage-based display
     const offsetPercentage = OFFSETS[breakpoint] && OFFSETS[breakpoint][offsetNum]
       ? OFFSETS[breakpoint][offsetNum]
       : '0%';
-    
-    // Calculate actual pixel value
     const availableSpace = VIEWPORTS[breakpoint].availableSpace;
     const offsetPx = Math.round((parseFloat(offsetPercentage) / 100) * availableSpace);
-    
-    // For sm breakpoint, provide special context
     if (breakpoint === 'sm') {
       if (offsetNum === 11) {
         infoElement.innerHTML = `${formatPx(offsetPx)} (positions col-1 in second half)`;
@@ -278,13 +300,11 @@ function updateOffsetInfo() {
         infoElement.innerHTML = `${formatPx(offsetPx)} (no offset for mobile layout)`;
       }
     } else {
-      // For larger breakpoints, show traditional offset info
       const colNumber = 12 - parseInt(offsetNum);
-      const colValue = RACK_COLUMNS[breakpoint] && RACK_COLUMNS[breakpoint][colNumber]
+      const colPercent = RACK_COLUMNS[breakpoint] && RACK_COLUMNS[breakpoint][colNumber]
         ? RACK_COLUMNS[breakpoint][colNumber]
         : 'auto';
-      
-      infoElement.innerHTML = `${formatPx(offsetPx)} (${offsetPercentage}) + col-${colNumber} (${colValue})`;
+      infoElement.innerHTML = `${formatPx(offsetPx)} (${offsetPercentage}) + col-${colNumber} (${colPercent})`;
     }
   }
 }
