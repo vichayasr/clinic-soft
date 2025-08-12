@@ -11,8 +11,9 @@
   </head>
   <body class="bg-white">
     <header class="bg-gray-50">
-      <div class="rack">
-        <div class="col-12">
+      <div class="page-wrapper">
+        <div class="rack">
+          <div class="col-12">
           <div class="flex h-20 items-center justify-between">
             <a href="/" class="flex items-center space-x-2">
               <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
@@ -24,24 +25,29 @@
               <a href="https://github.com/everysundays/psp-asia-dev-template" class="px-4 py-2 rounded-lg transition-all duration-200 text-sm font-medium" style="background-color: rgba(86, 86, 86, 0.1); color: #565656;" onmouseover="this.style.backgroundColor='rgba(86, 86, 86, 0.2)'" onmouseout="this.style.backgroundColor='rgba(86, 86, 86, 0.1)'">GitHub</a>
             </nav>
           </div>
+          </div>
         </div>
       </div>
     </header>
 
     <main>
-      <div class="rack">
-        <div class="col-12">
-          <%= yield %>
+      <div class="page-wrapper">
+        <div class="rack">
+          <div class="col-12">
+            <%= yield %>
+          </div>
         </div>
       </div>
     </main>
 
     <footer class="mt-24 border-t" style="border-color: rgba(86, 86, 86, 0.2);">
-      <div class="rack">
-        <div class="col-12 py-4 text-center">
-          <p class="text-sm" style="color: #666;">
-            © <%= Time.now.year %> PSP Layout Demo. Built with Tailwind CSS v4.
-          </p>
+      <div class="page-wrapper">
+        <div class="rack">
+          <div class="col-12 py-4 text-center">
+            <p class="text-sm" style="color: #666;">
+              © <%= Time.now.year %> PSP Layout Demo. Built with Tailwind CSS v4.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
