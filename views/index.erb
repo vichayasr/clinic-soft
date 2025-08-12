@@ -1,3 +1,5 @@
+<%# Page asset config now set in app.rb %>
+
 <div class="page-wrapper">
   <h1>Rack & Rail Grid Plugin</h1>
   <p>A responsive grid system with two container types: <strong>Rack</strong> (end-to-end col- that wrap) and <strong>Rail</strong> (horizontally scrollable rows).</p>
@@ -6,27 +8,8 @@
 <section>
   <div class="page-wrapper">
     <h2>Column Width Demo</h2>
-    <div class="toggle-container">
-      <input type="radio" name="container-type" id="rack-toggle" checked>
-      <input type="radio" name="container-type" id="rail-toggle">
-      <div class="toggle-switch">
-        <label for="rack-toggle" class="rack-label">Rack Container</label>
-        <label for="rail-toggle" class="rail-label">Rail Container</label>
-      </div>
-    </div>
-
-    <div id="rack-code-block" class="code-block">
+    <div class="code-block">
       <pre>&lt;div class="rack"&gt;
-  &lt;div class="col-1"&gt;col-1&lt;/div&gt;
-  &lt;div class="col-2"&gt;col-2&lt;/div&gt;
-  &lt;div class="col-3"&gt;col-3&lt;/div&gt;
-  &lt;div class="col-4"&gt;col-4&lt;/div&gt;
-  ...
-&lt;/div&gt;</pre>
-    </div>
-
-    <div id="rail-code-block" class="code-block" style="display: none;">
-      <pre>&lt;div class="rail"&gt;
   &lt;div class="col-1"&gt;col-1&lt;/div&gt;
   &lt;div class="col-2"&gt;col-2&lt;/div&gt;
   &lt;div class="col-3"&gt;col-3&lt;/div&gt;
@@ -39,7 +22,7 @@
   <div class="rack text-gray-900">
     <% (1..12).each do |i| %>
       <div class="col-<%= i %>">
-        <strong>col-<%= i %></strong> <span id="col-<%= i %>-info">Loading...</span>
+        <strong>col-<%= i %></strong>
       </div>
     <% end %>
   </div>
@@ -52,58 +35,38 @@
   </div>
   <div class="rack">
     <div class="col-2 offset-2"><strong>offset-2 + col-2</strong></div>
-    <div class="col-8"><strong>col-8</strong></div>
-  </div>
-
-  <div class="rack" style="margin-top: 1rem;">
+    <div class="col-4"><strong>col-4</strong></div>
+    <div class="col-4"><strong>col-4</strong></div>
+  
     <div class="col-2 offset-1"><strong>offset-1 + col-2</strong></div>
     <div class="col-9"><strong>col-9</strong></div>
-  </div>
-
-  <div class="rack" style="margin-top: 0.5rem;">
+  
     <div class="col-3 offset-1"><strong>offset-1 + col-3</strong></div>
     <div class="col-8"><strong>col-8</strong></div>
-  </div>
-
-  <div class="rack" style="margin-top: 0.5rem;">
+  
     <div class="col-3 offset-2"><strong>offset-2 + col-3</strong></div>
     <div class="col-7"><strong>col-7</strong></div>
-  </div>
-
-  <div class="rack" style="margin-top: 0.5rem;">
+  
     <div class="col-2 offset-3"><strong>offset-3 + col-2</strong></div>
     <div class="col-7"><strong>col-7</strong></div>
-  </div>
-
-  <div class="rack" style="margin-top: 0.5rem;">
+  
     <div class="col-4 offset-4"><strong>offset-4 + col-4</strong></div>
     <div class="col-4"><strong>col-4</strong></div>
-  </div>
-
-  <div class="rack" style="margin-top: 0.5rem;">
+  
     <div class="col-3 offset-5"><strong>offset-5 + col-3</strong></div>
     <div class="col-4"><strong>col-4</strong></div>
-  </div>
-
-  <div class="rack" style="margin-top: 0.5rem;">
+  
     <div class="col-4 offset-2"><strong>offset-2 + col-4</strong></div>
     <div class="col-6"><strong>col-6</strong></div>
-  </div>
-
-  <div class="rack" style="margin-top: 0.5rem;">
+  
     <div class="col-2 offset-6"><strong>offset-6 + col-2</strong></div>
     <div class="col-4"><strong>col-4</strong></div>
   </div>
 </section>
 
-<!-- Page-specific demo assets -->
-<link rel="stylesheet" href="/css/demo.css" />
-<script src="/js/demo.js"></script>
-
 <section>
   <div class="page-wrapper">
     <h2>Responsive col- Example (Rack Container Only)</h2>
-    <p>These col- automatically adjust their width according to the breakpoint without needing explicit classes for each viewport. Note how shorter col- can inline with longer ones depending on the viewport size.</p>
   </div>
 
   <div class="rack">
@@ -130,13 +93,7 @@
     <% demo_cols.each do |row| %>
       <% row.each do |col_size| %>
         <div class="col-<%= col_size %>">
-          <strong>col-<%= col_size %></strong> 
-          <span id="responsive-col-<%= col_size %>-info-<%= col_counter[col_size] %>">Loading...</span>
-          <% if col_size == 8 && col_counter[8] == 1 %>
-            <ul id="link-listing" class="flex flex-row">
-              <% (1..5).each { |i| %><li>link <%= i %></li><% } %>
-            </ul>
-          <% end %>
+          <strong>col-<%= col_size %></strong>
         </div>
         <% col_counter[col_size] += 1 %>
       <% end %>
@@ -161,8 +118,7 @@
       <% (1..11).each do |offset| %>
         <% col_size = 12 - offset %>
         <div class="col-<%= col_size %> offset-<%= offset %>">
-          <strong>offset-<%= offset %> + col-<%= col_size %></strong> - 
-          <span id="offset-<%= offset %>-info" data-offset="<%= offset %>">Loading...</span>
+          <strong>offset-<%= offset %> + col-<%= col_size %></strong>
         </div>
       <% end %>
     </div>

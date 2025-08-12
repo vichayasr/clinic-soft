@@ -10,36 +10,43 @@ The offset system provides grid positioning capabilities for the Rack & Rail gri
 ## Core Concept
 
 ### Current Implementation
-The offset system uses `grid-column-start` to position elements within the CSS Grid:
+The offset system uses `grid-column-start` to position elements within the CSS Grid.
+
+At lg+ we use a 24-track grid to support half-column precision. Each offset unit equals 1 track (half of a 12-col). Thus:
+
+- start = offset + 1 (on 24-track grid)
+- `.col-n` spans `2n` tracks on lg+
 
 ```css
-.offset-1 { grid-column-start: 2; } /* Start at column 2 (skip 1) */
-.offset-2 { grid-column-start: 3; } /* Start at column 3 (skip 2) */
-.offset-3 { grid-column-start: 4; } /* Start at column 4 (skip 3) */
-/* ... continues through offset-11 */
+/* lg+ 24-track grid */
+.rack { grid-template-columns: repeat(24, minmax(0, 1fr)); }
+.rack .col-1 { grid-column: span 2; }
+.rack .col-2 { grid-column: span 4; }
+/* ... col-n spans 2n */
+
+/* Each offset = 1 track (half column) */
+.rack .offset-1  { grid-column-start: 2; }
+.rack .offset-2  { grid-column-start: 3; }
+.rack .offset-3  { grid-column-start: 4; }
+/* ... through offset-11 → start 12 */
 ```
 
 ### Key Principles
 1. **Grid positioning**: Changes the starting position of elements within the CSS Grid
 2. **Traditional approach**: Uses standard CSS Grid `grid-column-start` property
 3. **Predictable behavior**: Shifts content to the right by exactly n columns
-4. **Responsive consistency**: Works identically across all breakpoints
+4. **Responsive consistency**: Works identically across all breakpoints (with half-column precision at lg+)
 
 ## Implementation
 
-### Primary Offset Classes
+### Primary Offset Classes (lg+)
 ```css
-.offset-1 { grid-column-start: 2; }  /* Skip 1 column, start at 2 */
-.offset-2 { grid-column-start: 3; }  /* Skip 2 columns, start at 3 */
-.offset-3 { grid-column-start: 4; }  /* Skip 3 columns, start at 4 */
-.offset-4 { grid-column-start: 5; }  /* Skip 4 columns, start at 5 */
-.offset-5 { grid-column-start: 6; }  /* Skip 5 columns, start at 6 */
-.offset-6 { grid-column-start: 7; }  /* Skip 6 columns, start at 7 */
-.offset-7 { grid-column-start: 8; }  /* Skip 7 columns, start at 8 */
-.offset-8 { grid-column-start: 9; }  /* Skip 8 columns, start at 9 */
-.offset-9 { grid-column-start: 10; } /* Skip 9 columns, start at 10 */
-.offset-10 { grid-column-start: 11; }/* Skip 10 columns, start at 11 */
-.offset-11 { grid-column-start: 12; }/* Skip 11 columns, start at 12 */
+/* start = offset + 1 (on 24 tracks) */
+.rack .offset-1  { grid-column-start: 2; }
+.rack .offset-2  { grid-column-start: 3; }
+.rack .offset-3  { grid-column-start: 4; }
+...
+.rack .offset-11 { grid-column-start: 12; }
 ```
 
 ### Legacy Offset-Center Classes (Backward Compatibility)
@@ -94,7 +101,7 @@ The offset system uses `grid-column-start` to position elements within the CSS G
 The offset system works consistently across all responsive breakpoints:
 - **xs/sm (0-767px)**: Offset positioning works with mobile column spans
 - **md (768px+)**: Offset positioning works with 7-column proportional system  
-- **lg+ (1024px+)**: Offset positioning works with standard 12-column grid
+- **lg+ (1024px+)**: 24-track grid (half-column precision), offset unit = 1 track
 - **Consistent behavior**: `grid-column-start` values remain constant across breakpoints
 
 ### Integration with CSS Grid
@@ -106,14 +113,14 @@ The offset system leverages CSS Grid's built-in positioning capabilities:
 ### Calculation Logic
 
 For any `offset-N` class:
-- **Starting position**: Column N + 1 (skip N columns)
+- **Starting track**: N + 1 (on 24-track grid)
 - **Grid line targeting**: `grid-column-start: N + 1`
-- **Compatible with spans**: Works with any `.col-X` class for width control
+- **Compatible with spans**: Works with any `.col-X` class (which span `2n` tracks on lg+)
 
-Example: `offset-3 col-6`
-- Starts at column 4 (skip 3 columns)
-- Spans 6 columns from starting position
-- Occupies grid columns 4-9
+Example (lg+): `offset-3 col-6`
+- Starts at track 4 (skip 3 tracks = 1.5 columns)
+- Spans 12 tracks (6 columns)
+- Occupies tracks 4–15 (≈ columns 2–8.5 visually)
 
 ## Current vs Legacy Approach
 

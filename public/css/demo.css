@@ -19,6 +19,14 @@ body {
   line-height: 1.6;
 }
 
+/* Header and nav branding extracted from views */
+.site-header { background-color: #e4f2ff; }
+.site-brand { color: #565656; }
+.site-nav-link { color: #565656; }
+.site-nav-link:hover { color: #333; }
+.site-cta { background-color: rgba(86,86,86,0.1); color: #565656; }
+.site-cta:hover { background-color: rgba(86,86,86,0.2); }
+
 /* Add subtle background pattern */
 body::before {
   content: '';
@@ -192,6 +200,7 @@ input[type="radio"] {
    ================================ */
 .offset-demo .rack {
   margin-bottom: 0.625rem;
+  row-gap: 1rem; /* ensure consistent vertical spacing between rows */
 }
 
 .offset-demo .rack > [class*="col-"] {
@@ -266,6 +275,64 @@ input[type="radio"] {
 .span-override-demo[data-offset="10"][data-col="2"] { margin-left: 12.5%; }
 .span-override-demo[data-offset="11"][data-col="1"] { margin-left: 12.5%; }
 
+/* ================================
+   OFFSET RULES MOVED FROM PRESET (DEMO-ONLY)
+   ================================ */
+/* sm-only quick baseline */
+@media (max-width: 47.999rem) {
+  .offset-demo .rack .col-2.offset-10,
+  .offset-demo .rack .col-1.offset-11 { grid-column: 1 / -1; }
+  .offset-demo .rack .col-2.offset-10,
+  .offset-demo .rack .col-1.offset-11 { width: 50%; margin-left: 25%; }
+}
+
+/* md-only faux centering */
+@media (min-width: 48rem) and (max-width: 63.999rem) {
+  .offset-demo .rack .col-6.offset-6  { grid-column: 1 / -1; width: 83.333%; margin-left: 8.333%; }
+  .offset-demo .rack .col-5.offset-7  { grid-column: 1 / -1; width: 75%;     margin-left: 12.5%;  }
+  .offset-demo .rack .col-4.offset-8  { grid-column: 1 / -1; width: 58.333%; margin-left: 20.833%; }
+  .offset-demo .rack .col-3.offset-9  { grid-column: 1 / -1; width: 41.667%; margin-left: 29.166%; }
+  .offset-demo .rack .col-2.offset-10 { grid-column: 1 / -1; width: 25%;     margin-left: 37.5%;  }
+  .offset-demo .rack .col-1.offset-11 { grid-column: 1 / -1; width: 16.667%; margin-left: 41.666%; }
+}
+
+/* lg demo complementary examples */
+@media (min-width: 64rem) {
+  .offset-demo .rack .col-11.offset-1  { grid-column: 1 / -1; width: 91.667%; margin-left: 4.166%; }
+  .offset-demo .rack .col-10.offset-2  { grid-column: 1 / -1; width: 83.333%; margin-left: 8.333%; }
+  .offset-demo .rack .col-9.offset-3   { grid-column: 1 / -1; width: 75%;     margin-left: 12.5%; }
+  .offset-demo .rack .col-8.offset-4   { grid-column: 1 / -1; width: 66.667%; margin-left: 16.667%; }
+  .offset-demo .rack .col-7.offset-5   { grid-column: 1 / -1; width: 58.333%; margin-left: 20.833%; }
+  .offset-demo .rack .col-6.offset-6   { grid-column: 1 / -1; width: 50%;     margin-left: 25%; }
+  .offset-demo .rack .col-5.offset-7   { grid-column: 1 / -1; width: 41.667%; margin-left: 29.166%; }
+  .offset-demo .rack .col-4.offset-8   { grid-column: 1 / -1; width: 33.333%; margin-left: 33.333%; }
+  .offset-demo .rack .col-3.offset-9   { grid-column: 1 / -1; width: 25%;     margin-left: 37.5%; }
+  .offset-demo .rack .col-2.offset-10  { grid-column: 1 / -1; width: 16.667%; margin-left: 41.666%; }
+  .offset-demo .rack .col-1.offset-11  { grid-column: 1 / -1; width: 8.333%;  margin-left: 45.833%; }
+
+  /* Offset row test placements */
+  .offset-demo .rack .col-2.offset-2 + .col-8 { grid-column: 7 / span 16; }
+  .offset-demo .rack .col-2.offset-1 + .col-9 { grid-column: 6 / span 18; }
+  .offset-demo .rack .col-3.offset-1 + .col-8 { grid-column: 8 / span 16; }
+  .offset-demo .rack .col-3.offset-2 + .col-7 { grid-column: 9 / span 14; }
+  .offset-demo .rack .col-2.offset-3 + .col-7 { grid-column: 8 / span 14; }
+  .offset-demo .rack .col-4.offset-4 + .col-4 { grid-column: 13 / span 8; }
+  .offset-demo .rack .col-3.offset-5 + .col-4 { grid-column: 12 / span 8; }
+  .offset-demo .rack .col-4.offset-2 + .col-6 { grid-column: 11 / span 12; }
+  .offset-demo .rack .col-2.offset-6 + .col-4 { grid-column: 11 / span 8; }
+
+  /* First item placements */
+  .offset-demo .rack .col-2.offset-2 { grid-column: 3 / span 4; }
+  .offset-demo .rack .col-2.offset-1 { grid-column: 2 / span 4; }
+  .offset-demo .rack .col-3.offset-1 { grid-column: 2 / span 6; }
+  .offset-demo .rack .col-3.offset-2 { grid-column: 3 / span 6; }
+  .offset-demo .rack .col-2.offset-3 { grid-column: 4 / span 4; }
+  .offset-demo .rack .col-4.offset-4 { grid-column: 5 / span 8; }
+  .offset-demo .rack .col-3.offset-5 { grid-column: 6 / span 6; }
+  .offset-demo .rack .col-4.offset-2 { grid-column: 3 / span 8; }
+  .offset-demo .rack .col-2.offset-6 { grid-column: 7 / span 4; }
+}
+
 
 /* ================================
    INFORMATIONAL SECTIONS
@@ -326,6 +393,10 @@ input[type="radio"] {
   background: linear-gradient(90deg, #8b5cf6, #3b82f6);
   border-radius: 0.75rem 0.75rem 0 0;
 }
+
+/* Footer extracted from views */
+.site-footer { border-color: rgba(86, 86, 86, 0.2); }
+.site-footer-text { color: #666; }
 
 .code-block pre {
   margin: 0;

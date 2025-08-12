@@ -28,7 +28,8 @@
   display: inline-flex;
   align-items: center;
   padding: 5px 10px;
-  background-color: #e2e8f0;
+  background-color: #c3cad2;
+  border: 1px solid #94a3b8; /* darker border for contrast */
   border-radius: 4px;
   transition: background-color 0.2s;
   height: 32px;

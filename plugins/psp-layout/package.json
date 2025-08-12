@@ -4,7 +4,7 @@
   "description": "CSS Grid (Rack) + Flexbox (Rail) layout system with Tailwind CSS v4 integration - PSP Layout Plugin",
   "author": "Pattaya Upara <everysundays@gmail.com>",
   "license": "MIT",
-  "main": "scripts/twlayout-plugin.js",
+  "main": "styles/preset.css",
   "keywords": [
     "css",
     "grid",
@@ -17,7 +17,7 @@
     "rail"
   ],
   "files": [
-    "scripts/",
+    "styles/",
     "doc/",
     "README.md"
   ],

@@ -5,36 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title><%= @page_title ? "#{@page_title} · PSP-Asia" : "PSP-Asia" %></title>
     <link rel="stylesheet" href="/css/app.css" />
-    <link rel="stylesheet" href="/css/demo.css" />
+    <% (@get_styles || []).each do |href| %>
+      <link rel="stylesheet" href="<%= href %>" />
+    <% end %>
   </head>
   <body class="bg-white">
-    <header class="bg-gray-200">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-20 items-center justify-between">
-        <a href="/" class="flex items-center space-x-2">
-          <span class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-            <span class="font-bold text-sm" style="color: #565656;">PSP</span>
-          </span>
-          <span class="text-xl font-bold tracking-tight" style="color: #565656;">PSP-Asia</span>
-        </a>
-        <nav class="flex items-center gap-6">
-          <a href="/" class="" style="color: #565656;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#565656'">Rack & Rail Grid Plugin</a>
-          <a href="https://github.com/everysundays/psp-asia-dev-template" class="px-4 py-2 rounded-lg transition-all duration-200 text-sm font-medium" style="background-color: rgba(86, 86, 86, 0.1); color: #565656;" onmouseover="this.style.backgroundColor='rgba(86, 86, 86, 0.2)'" onmouseout="this.style.backgroundColor='rgba(86, 86, 86, 0.1)'">GitHub</a>
-        </nav>
-      </div>
-    </header>
+    <%= erb :_header %>
 
     <main>
       <%= yield %>
     </main>
 
-    <footer class="mt-24 border-t" style="border-color: rgba(86, 86, 86, 0.2);">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 text-center">
-        <p class="text-sm" style="color: #666;">
-          © <%= Time.now.year %> PSP Layout Demo. Built with Tailwind CSS v4.
-        </p>
-      </div>
-    </footer>
-    <script src="/js/demo.js"></script>
+    <%= erb :_footer %>
+    <% (@get_scripts || []).each do |src| %>
+      <script src="<%= src %>"></script>
+    <% end %>
     <script src="/plugins/psp-layout/scripts/debug-mode.js"></script>
   </body>
   </html>
