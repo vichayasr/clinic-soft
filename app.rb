@@ -12,6 +12,8 @@ end
 
 get "/" do
   @page_title = "Home"
+  @get_styles = ["/css/demo.css"]
+  @get_scripts = ["/js/demo.js"]
   erb :index
 end
 

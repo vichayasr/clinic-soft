@@ -1,0 +1,40 @@
+/* PSP Layout Preset - served statically for the demo page */
+@theme {
+  --font-sans: "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+}
+
+.rack, .rail { width: 100%; box-sizing: border-box; padding-left: 1.5rem; padding-right: 1.5rem; }
+.rack { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1rem; }
+.rail { display: flex; gap: 1rem; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+.rail::-webkit-scrollbar { display: none; }
+.page-wrapper { width: 100%; margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; }
+
+/* Column spans */
+.col-1, .col-2 { grid-column: span 6; }
+.col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 { grid-column: span 12; }
+@media (min-width: 48rem) { .col-1 { grid-column: span 2; } .col-2 { grid-column: span 3; } .col-3 { grid-column: span 5; } .col-4 { grid-column: span 7; } .col-5 { grid-column: span 9; } .col-6 { grid-column: span 10; } .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 { grid-column: span 12; } }
+@media (min-width: 64rem) { .col-1 { grid-column: span 1; } .col-2 { grid-column: span 2; } .col-3 { grid-column: span 3; } .col-4 { grid-column: span 4; } .col-5 { grid-column: span 5; } .col-6 { grid-column: span 6; } .col-7 { grid-column: span 7; } .col-8 { grid-column: span 8; } .col-9 { grid-column: span 9; } .col-10 { grid-column: span 10; } .col-11 { grid-column: span 11; } .col-12 { grid-column: span 12; } }
+
+/* Rail fixed widths */
+.rail .col-1 { width: 16rem; min-width: 16rem; flex-shrink: 0; }
+.rail .col-2 { width: 20rem; min-width: 20rem; flex-shrink: 0; }
+.rail .col-3 { width: 24rem; min-width: 24rem; flex-shrink: 0; }
+.rail .col-4 { width: 28rem; min-width: 28rem; flex-shrink: 0; }
+.rail .col-5 { width: 32rem; min-width: 32rem; flex-shrink: 0; }
+.rail .col-6 { width: 36rem; min-width: 36rem; flex-shrink: 0; }
+.rail .col-7 { width: 40rem; min-width: 40rem; flex-shrink: 0; }
+.rail .col-8 { width: 44rem; min-width: 44rem; flex-shrink: 0; }
+.rail .col-9 { width: 48rem; min-width: 48rem; flex-shrink: 0; }
+.rail .col-10 { width: 52rem; min-width: 52rem; flex-shrink: 0; }
+.rail .col-11 { width: 56rem; min-width: 56rem; flex-shrink: 0; }
+.rail .col-12 { width: 100%; min-width: 100%; flex-shrink: 0; }
+
+/* Rail variants */
+.rail-standard { gap: 1rem !important; }
+.rail-slide { gap: 1.5rem !important; }
+
+/* Global base */
+html { font-family: var(--font-sans); }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color: rgb(31 41 55); }
+
+

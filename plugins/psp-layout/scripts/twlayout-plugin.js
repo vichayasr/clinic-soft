@@ -18,7 +18,7 @@
  */
 
 const plugin = require('tailwindcss/plugin');
-const { SYSTEM, VIEWPORTS, RACK_COLUMNS, RAIL_COLUMNS, RAIL_GAPS, OFFSETS, validateGridConfig } = require('./grid-config');
+const { SYSTEM, VIEWPORTS, RACK_COLUMNS, RAIL_COLUMNS, RAIL_GAPS, validateGridConfig } = require('./grid-config');
 
 /**
  * CSS Variable Generator
@@ -37,10 +37,6 @@ function generateCSSVariables(breakpoint, config) {
     '--tw-layout-max-width': `${config.availableSpace}px`,
     '--tw-layout-breakpoint': breakpoint,
     
-    // Offset system variables
-    '--offset-base': 'calc(100% / var(--grid-columns))',  // One column width
-    '--offset-gap': 'var(--base-gap)',                    // Existing gap variable
-    
     // Rail gap variables
     '--tw-rail-gap-standard': RAIL_GAPS.STANDARD,
     '--tw-rail-gap-slide': RAIL_GAPS.SLIDE_MODE[breakpoint],
@@ -53,11 +49,6 @@ function generateCSSVariables(breakpoint, config) {
 
   Object.entries(RAIL_COLUMNS[breakpoint]).forEach(([col, width]) => {
     vars[`--tw-rail-col-${col}`] = width;
-  });
-
-  // Offset variables (systematic padding values)
-  Object.entries(OFFSETS[breakpoint]).forEach(([offset, paddingValue]) => {
-    vars[`--offset-${offset}-padding`] = paddingValue;
   });
 
   return vars;
@@ -129,9 +120,9 @@ function generateBaseComponents() {
 function generateColumnClasses(breakpoint) {
   const classes = {};
   
-  // Rack column classes (.col-{n}) - CSS Grid spans
+  // Rack column classes (.rack .col-{n}) - CSS Grid spans with higher specificity to override Tailwind utilities
   Object.entries(RACK_COLUMNS[breakpoint]).forEach(([col, span]) => {
-    classes[`.col-${col}`] = {
+    classes[`.rack .col-${col}`] = {
       gridColumn: span,
     };
   });
@@ -144,13 +135,23 @@ function generateColumnClasses(breakpoint) {
       flexShrink: 0,
     };
   });
-  
-  // Offset classes (.offset-{n}) - Systematic padding-based centering
-  Object.entries(OFFSETS[breakpoint]).forEach(([offset, paddingValue]) => {
-    classes[`.offset-${offset}`] = {
-      paddingInline: `var(--offset-${offset}-padding)`,
+
+  // Offset classes (.offset-{n}) - Faux centering using margin-left only
+  // Formula per breakpoint b and offset k:
+  // n = 12 - k; r = min(1, span_b(n) / 12); ml = max(0, (1 - r) / 2) * 100%
+  for (let k = 0; k <= 11; k += 1) {
+    const n = 12 - k;
+    const spanDef = RACK_COLUMNS[breakpoint] && RACK_COLUMNS[breakpoint][n] ? RACK_COLUMNS[breakpoint][n] : 'span 12';
+    const match = String(spanDef).match(/(\d+)/);
+    const spanUnits = match ? parseInt(match[1], 10) : 12;
+    const ratio = Math.min(1, spanUnits / 12);
+    const ml = Math.max(0, (1 - ratio) / 2) * 100;
+    // format to 3 decimals without trailing zeros
+    const mlString = `${parseFloat(ml.toFixed(3))}%`;
+    classes[`.offset-${k}`] = {
+      marginLeft: mlString,
     };
-  });
+  }
 
   // Page wrapper max-width
   classes['.page-wrapper'] = {
@@ -193,6 +194,8 @@ module.exports = plugin(function({ addBase, addComponents, addUtilities, theme }
     // Add base components
     const baseComponents = generateBaseComponents();
     addComponents(baseComponents);
+
+    // Note: preset CSS is kept for reference; functional styles are generated above.
     
     // Add base padding styles (lower specificity, can be overridden by utilities)
     addBase({
@@ -256,6 +259,9 @@ module.exports = plugin(function({ addBase, addComponents, addUtilities, theme }
       },
     });
     
+    addUtilities({
+      '.__psp_layout_plugin_loaded': { display: 'none' },
+    });
     console.log('PSP Layout Plugin v1.0.0: Successfully initialized');
     
   } catch (error) {
