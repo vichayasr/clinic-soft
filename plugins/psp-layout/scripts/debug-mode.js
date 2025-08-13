@@ -113,11 +113,20 @@
     viewportInput.placeholder = '1200 × 800 (lg)';
     viewportInput.readOnly = true;
 
+    // Additional input for rem × rem readout
+    var viewportRemInput = document.createElement('input');
+    viewportRemInput.type = 'text';
+    viewportRemInput.id = 'viewport-rem-input';
+    viewportRemInput.className = 'viewport-input viewport-input-rem';
+    viewportRemInput.placeholder = '75.00rem × 50.00rem';
+    viewportRemInput.readOnly = true;
+
     var dropdownMenu = document.createElement('div');
     dropdownMenu.id = 'viewport-dropdown';
     dropdownMenu.className = 'viewport-dropdown-menu';
 
     viewportContainer.appendChild(viewportInput);
+    viewportContainer.appendChild(viewportRemInput);
     viewportContainer.appendChild(dropdownMenu);
 
     // Add both containers to the debug container
@@ -154,6 +163,7 @@
     // DOM elements
     const debugToggleCheckbox = document.getElementById('debug-mode-toggle');
     const viewportInput = document.getElementById('viewport-input');
+    const viewportRemInput = document.getElementById('viewport-rem-input');
     const dropdownMenu = document.getElementById('viewport-dropdown');
     const body = document.body;
 
@@ -176,6 +186,20 @@
         viewportInput.classList.remove('sm', 'md', 'lg', 'xl');
         // Add current breakpoint class for color coding
         viewportInput.classList.add(breakpoint);
+      }
+
+      if (viewportRemInput) {
+        var rootFontSizePx = 16;
+        try {
+          var computedFontSize = window.getComputedStyle(document.documentElement).fontSize;
+          var parsed = parseFloat(computedFontSize);
+          if (!isNaN(parsed) && parsed > 0) {
+            rootFontSizePx = parsed;
+          }
+        } catch (e) {}
+        var widthRem = (currentViewportWidth / rootFontSizePx).toFixed(2);
+        var heightRem = (currentViewportHeight / rootFontSizePx).toFixed(2);
+        viewportRemInput.value = `${widthRem}rem × ${heightRem}rem`;
       }
     }
 

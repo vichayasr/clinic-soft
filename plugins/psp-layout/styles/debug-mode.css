@@ -61,6 +61,7 @@ body.debug-mode .debug-toggle-label {
   align-items: flex-start;
   flex-shrink: 0;
   min-width: 80px;
+  gap: 8px;
 }
 
 body.debug-mode .viewport-container.debug-only {
@@ -68,7 +69,7 @@ body.debug-mode .viewport-container.debug-only {
 }
 
 .viewport-input {
-  width: 160px;
+  width: 170px;
   height: 32px;
   padding: 4px 8px;
   border: 1px solid #d1d5db;
@@ -95,6 +96,13 @@ body.debug-mode .viewport-container.debug-only {
   outline: none;
   border-color: #3b82f6;
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+/* rem readout variant */
+.viewport-input.viewport-input-rem {
+  width: 170px;
+  font-weight: 600;
+  color: #334155;
 }
 
 /* Dropdown Menu */
