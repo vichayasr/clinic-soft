@@ -18,7 +18,8 @@
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  /* Always use 24-track grid (half-column precision) at all sizes */
+  grid-template-columns: repeat(24, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -48,38 +49,19 @@
   padding-right: 1.5rem;
 }
 
-/* Column classes for different breakpoints */
-/* Small screens (mobile first) - col-1,2 = 50%, col-3+ = 100% */
-.col-1, .col-2 { grid-column: span 6; }
-.col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 { grid-column: span 12; }
-
-/* Medium screens and up - 7-column proportional system */
-@media (min-width: 48rem) {
-  .col-1 { grid-column: span 5; }
-  .col-2 { grid-column: span 5; }
-  .col-3 { grid-column: span 5; }
-  .col-4 { grid-column: span 7; }
-  .col-5 { grid-column: span 9; }
-  .col-6 { grid-column: span 10; }
-  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 { grid-column: span 12; }
-}
-
-/* Large screens and up - 24-track grid (half-column precision) */
-@media (min-width: 64rem) {
-  .rack { grid-template-columns: repeat(24, minmax(0, 1fr)); }
-  .rack .col-1 { grid-column: span 2; }
-  .rack .col-2 { grid-column: span 4; }
-  .rack .col-3 { grid-column: span 6; }
-  .rack .col-4 { grid-column: span 8; }
-  .rack .col-5 { grid-column: span 10; }
-  .rack .col-6 { grid-column: span 12; }
-  .rack .col-7 { grid-column: span 14; }
-  .rack .col-8 { grid-column: span 16; }
-  .rack .col-9 { grid-column: span 18; }
-  .rack .col-10 { grid-column: span 20; }
-  .rack .col-11 { grid-column: span 22; }
-  .rack .col-12 { grid-column: span 24; }
-}
+/* Column spans on 24-track grid (2 tracks per column) */
+.rack .col-1 { grid-column: span 2; }
+.rack .col-2 { grid-column: span 4; }
+.rack .col-3 { grid-column: span 6; }
+.rack .col-4 { grid-column: span 8; }
+.rack .col-5 { grid-column: span 10; }
+.rack .col-6 { grid-column: span 12; }
+.rack .col-7 { grid-column: span 14; }
+.rack .col-8 { grid-column: span 16; }
+.rack .col-9 { grid-column: span 18; }
+.rack .col-10 { grid-column: span 20; }
+.rack .col-11 { grid-column: span 22; }
+.rack .col-12 { grid-column: span 24; }
 
 /* Rail columns - fixed widths for horizontal scrolling */
 .rail .col-1 { width: 16rem; min-width: 16rem; flex-shrink: 0; }
@@ -103,24 +85,20 @@
 
 /* Offsets for sm/md are demo-only and live in public/css/demo.css */
 
-/* Offsets (lg+): grid-start based half-column offsets on 24-track grid */
-@media (min-width: 64rem) {
-  /* Each offset unit equals half a column (one 24-track unit). */
-  /* start = offset + 1 on 24-track grid (each offset = 0.5 col = 1 track) */
-  .rack .offset-1  { grid-column-start: 2; }
-  .rack .offset-2  { grid-column-start: 3; }
-  .rack .offset-3  { grid-column-start: 4; }
-  .rack .offset-4  { grid-column-start: 5; }
-  .rack .offset-5  { grid-column-start: 6; }
-  .rack .offset-6  { grid-column-start: 7; }
-  .rack .offset-7  { grid-column-start: 8; }
-  .rack .offset-8  { grid-column-start: 9; }
-  .rack .offset-9  { grid-column-start: 10; }
-  .rack .offset-10 { grid-column-start: 11; }
-  .rack .offset-11 { grid-column-start: 12; }
-
-  /* Demo-only placement helpers moved to public/css/demo.css */
-}
+/* Offsets: grid-start based half-column offsets on 24-track grid (always on) */
+/* Each offset unit equals half a column (one 24-track unit). */
+/* start = offset + 1 on 24-track grid (each offset = 0.5 col = 1 track) */
+.rack .offset-1  { grid-column-start: 2; }
+.rack .offset-2  { grid-column-start: 3; }
+.rack .offset-3  { grid-column-start: 4; }
+.rack .offset-4  { grid-column-start: 5; }
+.rack .offset-5  { grid-column-start: 6; }
+.rack .offset-6  { grid-column-start: 7; }
+.rack .offset-7  { grid-column-start: 8; }
+.rack .offset-8  { grid-column-start: 9; }
+.rack .offset-9  { grid-column-start: 10; }
+.rack .offset-10 { grid-column-start: 11; }
+.rack .offset-11 { grid-column-start: 12; }
 
 /* Global base styles */
 html { font-family: var(--font-sans); }
