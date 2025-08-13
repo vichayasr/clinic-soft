@@ -21,7 +21,7 @@
   </div>
 
   <div class="page-wrapper">
-    <div class="demo-controls" style="margin: 8px 0 12px;">
+    <div class="demo-controls">
       <button id="big-rack-rail-toggle" class="big-toggle" type="button" aria-pressed="false">
         <span class="toggle-visual" aria-hidden="true"><span class="thumb"></span></span>
         <span class="label-text"><span class="mode-label">Rack</span></span>
@@ -29,7 +29,7 @@
     </div>
   </div>
 
-  <div id="col-width-container" class="rack text-gray-900">
+  <div id="col-width-container" class="rack">
     <% (1..12).each do |i| %>
       <div class="col-<%= i %>">
         <strong>col-<%= i %></strong>
