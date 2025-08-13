@@ -8,7 +8,7 @@ get "/" do
   @page_title = "Home"
   @get_styles = ["/css/demo.css"]
   @get_scripts = ["/plugins/psp-layout/scripts/debug-mode.js"]
-  erb :index
+  erb :"demo-index"
 end
 
 # Serve assets from the template-level plugins directory at /plugins/*

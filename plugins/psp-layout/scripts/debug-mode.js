@@ -110,7 +110,7 @@
     viewportInput.type = 'text';
     viewportInput.id = 'viewport-input';
     viewportInput.className = 'viewport-input';
-    viewportInput.placeholder = '1200px (lg)';
+    viewportInput.placeholder = '1200 × 800 (lg)';
     viewportInput.readOnly = true;
 
     var dropdownMenu = document.createElement('div');
@@ -147,6 +147,7 @@
 
     // State management
     let currentViewportWidth = window.innerWidth;
+    let currentViewportHeight = window.innerHeight;
     let isDropdownOpen = false;
     let inspectorTooltip = null;
 
@@ -169,7 +170,7 @@
     function updateViewportDisplay() {
       if (viewportInput) {
         const breakpoint = getCurrentBreakpoint();
-        viewportInput.value = `${currentViewportWidth}px (${breakpoint})`;
+        viewportInput.value = `${currentViewportWidth} × ${currentViewportHeight}px (${breakpoint})`;
         
         // Remove previous breakpoint classes
         viewportInput.classList.remove('sm', 'md', 'lg', 'xl');
@@ -423,6 +424,7 @@
     // Update viewport on window resize
     window.addEventListener('resize', () => {
       currentViewportWidth = window.innerWidth;
+      currentViewportHeight = window.innerHeight;
       updateViewportDisplay();
     });
 
