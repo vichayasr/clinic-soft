@@ -41,6 +41,34 @@
 
   <section>
   <div class="page-wrapper">
+    <h2>Indentation POC (3 ways without offset-*)</h2>
+    <p>Spacer element, inner wrapper margin, and row padding. Demo-only helpers; engine math unchanged.</p>
+  </div>
+
+  <!-- 1) Spacer element: consumes grid tracks invisibly -->
+  <div class="rack">
+    <div class="spacer col-3"></div>
+    <div class="col-3"><strong>spacer col-3</strong></div>
+    <div class="col-6"><strong>content col-6</strong></div>
+  </div>
+
+  <!-- 2) Inner wrapper margin: shift content inside its cell -->
+  <div class="rack indent indent-2">
+    <div class="col-12">
+      <div class="indent-inner"><strong>indent-inner (2/12)</strong></div>
+    </div>
+  </div>
+
+  <!-- 3) Row-level padding: shift entire rack content -->
+  <div class="rack row-indent-2">
+    <div class="col-4"><strong>row-indent (2/12)</strong></div>
+    <div class="col-4"><strong>col-4</strong></div>
+    <div class="col-4"><strong>col-4</strong></div>
+  </div>
+  </section>
+
+  <section>
+  <div class="page-wrapper">
     <h2>Offset row test</h2>
     <p>Check if <code>.offset-2.col-2</code> and <code>.col-8</code> sit on the same row.</p>
   </div>
