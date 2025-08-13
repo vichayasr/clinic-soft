@@ -18,8 +18,8 @@
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   display: grid;
-  /* Always use 24-track grid (half-column precision) at all sizes */
-  grid-template-columns: repeat(24, minmax(0, 1fr));
+  /* sm: coarse 2-track grid (keeps API stable while minimizing rules) */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -49,19 +49,45 @@
   padding-right: 1.5rem;
 }
 
-/* Column spans on 24-track grid (2 tracks per column) */
-.rack .col-1 { grid-column: span 2; }
-.rack .col-2 { grid-column: span 4; }
-.rack .col-3 { grid-column: span 6; }
-.rack .col-4 { grid-column: span 8; }
-.rack .col-5 { grid-column: span 10; }
-.rack .col-6 { grid-column: span 12; }
-.rack .col-7 { grid-column: span 14; }
-.rack .col-8 { grid-column: span 16; }
-.rack .col-9 { grid-column: span 18; }
-.rack .col-10 { grid-column: span 20; }
-.rack .col-11 { grid-column: span 22; }
-.rack .col-12 { grid-column: span 24; }
+/* sm (2 tracks): col-1..2 → 1 track, col-3..12 → 2 tracks */
+.rack .col-1, .rack .col-2 { grid-column: span 1; }
+.rack .col-3, .rack .col-4, .rack .col-5, .rack .col-6,
+.rack .col-7, .rack .col-8, .rack .col-9, .rack .col-10,
+.rack .col-11, .rack .col-12 { grid-column: span 2; }
+
+/* md (14 tracks): rounded mapping of 12ths to tracks */
+@media (min-width: 48rem) {
+  .rack { grid-template-columns: repeat(14, minmax(0, 1fr)); }
+  .rack .col-1 { grid-column: span 1; }
+  .rack .col-2 { grid-column: span 2; }
+  .rack .col-3 { grid-column: span 4; }
+  .rack .col-4 { grid-column: span 5; }
+  .rack .col-5 { grid-column: span 6; }
+  .rack .col-6 { grid-column: span 7; }
+  .rack .col-7 { grid-column: span 8; }
+  .rack .col-8 { grid-column: span 9; }
+  .rack .col-9 { grid-column: span 11; }
+  .rack .col-10 { grid-column: span 12; }
+  .rack .col-11 { grid-column: span 13; }
+  .rack .col-12 { grid-column: span 14; }
+}
+
+/* lg+ (24 tracks): half-column precision (2 tracks per column) */
+@media (min-width: 64rem) {
+  .rack { grid-template-columns: repeat(24, minmax(0, 1fr)); }
+  .rack .col-1 { grid-column: span 2; }
+  .rack .col-2 { grid-column: span 4; }
+  .rack .col-3 { grid-column: span 6; }
+  .rack .col-4 { grid-column: span 8; }
+  .rack .col-5 { grid-column: span 10; }
+  .rack .col-6 { grid-column: span 12; }
+  .rack .col-7 { grid-column: span 14; }
+  .rack .col-8 { grid-column: span 16; }
+  .rack .col-9 { grid-column: span 18; }
+  .rack .col-10 { grid-column: span 20; }
+  .rack .col-11 { grid-column: span 22; }
+  .rack .col-12 { grid-column: span 24; }
+}
 
 /* Rail columns - fixed widths for horizontal scrolling */
 .rail .col-1 { width: 16rem; min-width: 16rem; flex-shrink: 0; }
@@ -85,20 +111,43 @@
 
 /* Offsets for sm/md are demo-only and live in public/css/demo.css */
 
-/* Offsets: grid-start based half-column offsets on 24-track grid (always on) */
-/* Each offset unit equals half a column (one 24-track unit). */
-/* start = offset + 1 on 24-track grid (each offset = 0.5 col = 1 track) */
-.rack .offset-1  { grid-column-start: 2; }
-.rack .offset-2  { grid-column-start: 3; }
-.rack .offset-3  { grid-column-start: 4; }
-.rack .offset-4  { grid-column-start: 5; }
-.rack .offset-5  { grid-column-start: 6; }
-.rack .offset-6  { grid-column-start: 7; }
-.rack .offset-7  { grid-column-start: 8; }
-.rack .offset-8  { grid-column-start: 9; }
-.rack .offset-9  { grid-column-start: 10; }
-.rack .offset-10 { grid-column-start: 11; }
-.rack .offset-11 { grid-column-start: 12; }
+/* Offsets: sm (2 tracks) */
+.rack .offset-0 { grid-column-start: 1; }
+.rack .offset-1, .rack .offset-2, .rack .offset-3, .rack .offset-4,
+.rack .offset-5, .rack .offset-6, .rack .offset-7, .rack .offset-8,
+.rack .offset-9, .rack .offset-10, .rack .offset-11 { grid-column-start: 2; }
+
+/* Offsets: md (14 tracks) */
+@media (min-width: 48rem) {
+  .rack .offset-0  { grid-column-start: 1; }
+  .rack .offset-1  { grid-column-start: 2; }
+  .rack .offset-2  { grid-column-start: 3; }
+  .rack .offset-3  { grid-column-start: 5; }
+  .rack .offset-4  { grid-column-start: 6; }
+  .rack .offset-5  { grid-column-start: 7; }
+  .rack .offset-6  { grid-column-start: 8; }
+  .rack .offset-7  { grid-column-start: 9; }
+  .rack .offset-8  { grid-column-start: 10; }
+  .rack .offset-9  { grid-column-start: 12; }
+  .rack .offset-10 { grid-column-start: 13; }
+  .rack .offset-11 { grid-column-start: 14; }
+}
+
+/* Offsets: lg (24 tracks) */
+@media (min-width: 64rem) {
+  .rack .offset-0  { grid-column-start: 1; }
+  .rack .offset-1  { grid-column-start: 2; }
+  .rack .offset-2  { grid-column-start: 3; }
+  .rack .offset-3  { grid-column-start: 4; }
+  .rack .offset-4  { grid-column-start: 5; }
+  .rack .offset-5  { grid-column-start: 6; }
+  .rack .offset-6  { grid-column-start: 7; }
+  .rack .offset-7  { grid-column-start: 8; }
+  .rack .offset-8  { grid-column-start: 9; }
+  .rack .offset-9  { grid-column-start: 10; }
+  .rack .offset-10 { grid-column-start: 11; }
+  .rack .offset-11 { grid-column-start: 12; }
+}
 
 /* Global base styles */
 html { font-family: var(--font-sans); }
