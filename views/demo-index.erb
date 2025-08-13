@@ -22,10 +22,10 @@
 
   <div class="page-wrapper">
     <div class="demo-controls" style="margin: 8px 0 12px;">
-      <label class="inline-flex items-center gap-2 text-sm">
-        <input type="checkbox" id="rack-rail-toggle" />
-        <span>Rail mode</span>
-      </label>
+      <button id="big-rack-rail-toggle" class="big-toggle" type="button" aria-pressed="false">
+        <span class="toggle-visual" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label-text"><span class="mode-label">Rack</span> ↔ <span>Rail</span></span>
+      </button>
     </div>
   </div>
 
@@ -38,17 +38,16 @@
   </div>
   <script>
     (function() {
-      var toggle = document.getElementById('rack-rail-toggle');
+      var btn = document.getElementById('big-rack-rail-toggle');
       var container = document.getElementById('col-width-container');
-      if (toggle && container) {
-        toggle.addEventListener('change', function () {
-          if (this.checked) {
-            container.classList.remove('rack');
-            container.classList.add('rail');
-          } else {
-            container.classList.remove('rail');
-            container.classList.add('rack');
-          }
+      var label = btn ? btn.querySelector('.mode-label') : null;
+      if (btn && container && label) {
+        btn.addEventListener('click', function () {
+          var toRail = !container.classList.contains('rail');
+          container.classList.toggle('rail', toRail);
+          container.classList.toggle('rack', !toRail);
+          btn.setAttribute('aria-pressed', String(toRail));
+          label.textContent = toRail ? 'Rail' : 'Rack';
         });
       }
     })();
