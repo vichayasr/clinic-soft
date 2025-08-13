@@ -55,21 +55,16 @@
 .rack .col-7, .rack .col-8, .rack .col-9, .rack .col-10,
 .rack .col-11, .rack .col-12 { grid-column: span 2; }
 
-/* md (14 tracks): rounded mapping of 12ths to tracks */
+/* md (original mapping): from col-7 → full width; bespoke spans below */
 @media (min-width: 48rem) {
-  .rack { grid-template-columns: repeat(14, minmax(0, 1fr)); }
-  .rack .col-1 { grid-column: span 1; }
-  .rack .col-2 { grid-column: span 2; }
-  .rack .col-3 { grid-column: span 4; }
-  .rack .col-4 { grid-column: span 5; }
-  .rack .col-5 { grid-column: span 6; }
-  .rack .col-6 { grid-column: span 7; }
-  .rack .col-7 { grid-column: span 8; }
-  .rack .col-8 { grid-column: span 9; }
-  .rack .col-9 { grid-column: span 11; }
-  .rack .col-10 { grid-column: span 12; }
-  .rack .col-11 { grid-column: span 13; }
-  .rack .col-12 { grid-column: span 14; }
+  .rack { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .rack .col-1 { grid-column: span 5; }
+  .rack .col-2 { grid-column: span 5; }
+  .rack .col-3 { grid-column: span 5; }
+  .rack .col-4 { grid-column: span 7; }
+  .rack .col-5 { grid-column: span 9; }
+  .rack .col-6 { grid-column: span 10; }
+  .rack .col-7, .rack .col-8, .rack .col-9, .rack .col-10, .rack .col-11, .rack .col-12 { grid-column: span 12; }
 }
 
 /* lg+ (24 tracks): half-column precision (2 tracks per column) */
@@ -117,21 +112,7 @@
 .rack .offset-5, .rack .offset-6, .rack .offset-7, .rack .offset-8,
 .rack .offset-9, .rack .offset-10, .rack .offset-11 { grid-column-start: 2; }
 
-/* Offsets: md (14 tracks) */
-@media (min-width: 48rem) {
-  .rack .offset-0  { grid-column-start: 1; }
-  .rack .offset-1  { grid-column-start: 2; }
-  .rack .offset-2  { grid-column-start: 3; }
-  .rack .offset-3  { grid-column-start: 5; }
-  .rack .offset-4  { grid-column-start: 6; }
-  .rack .offset-5  { grid-column-start: 7; }
-  .rack .offset-6  { grid-column-start: 8; }
-  .rack .offset-7  { grid-column-start: 9; }
-  .rack .offset-8  { grid-column-start: 10; }
-  .rack .offset-9  { grid-column-start: 12; }
-  .rack .offset-10 { grid-column-start: 13; }
-  .rack .offset-11 { grid-column-start: 14; }
-}
+/* Offsets at md follow demo/documentation helpers; not defined in core preset */
 
 /* Offsets: lg (24 tracks) */
 @media (min-width: 64rem) {
