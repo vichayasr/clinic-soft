@@ -2,7 +2,7 @@
 
 <div class="demo-scope">
   <div class="page-wrapper">
-  <h1>Rack & Rail Grid Plugin</h1>
+  <h1>DEV/TEMPLATE</h1>
   <p>A responsive grid system with two container types: <strong>Rack</strong> (end-to-end col- that wrap) and <strong>Rail</strong> (horizontally scrollable rows).</p>
   </div>
 
@@ -36,22 +36,7 @@
       </div>
     <% end %>
   </div>
-  <script>
-    (function() {
-      var btn = document.getElementById('big-rack-rail-toggle');
-      var container = document.getElementById('col-width-container');
-      var label = btn ? btn.querySelector('.mode-label') : null;
-      if (btn && container && label) {
-        btn.addEventListener('click', function () {
-          var toRail = !container.classList.contains('rail');
-          container.classList.toggle('rail', toRail);
-          container.classList.toggle('rack', !toRail);
-          btn.setAttribute('aria-pressed', String(toRail));
-          label.textContent = toRail ? 'Rail' : 'Rack';
-        });
-      }
-    })();
-  </script>
+  <script src="/js/demo-toggle.js"></script>
   </section>
 
   <section>
@@ -151,5 +136,3 @@
   </section>
 
 </div>
-
-<!-- Offset comparison section removed per request -->
