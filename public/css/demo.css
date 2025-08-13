@@ -24,7 +24,7 @@ body {
 .site-brand { color: #565656; }
 .site-nav-link { color: #565656; }
 .site-nav-link:hover { color: #333; }
-.site-cta { background-color: rgba(86,86,86,0.1); color: #565656; }
+.site-cta { background-color: rgba(55, 55, 55, 0.55); color: #fff; padding: 0.5rem 1rem; border-radius: 0.5rem; margin-left: 1rem;}
 .site-cta:hover { background-color: rgba(86,86,86,0.2); }
 
 /* Add subtle background pattern */
@@ -270,88 +270,7 @@ input[type="radio"] {
 
 /* Comparison demo helpers (lg only for clarity) */
 @media (min-width: 64rem) {
-  /* Approach A: temporarily make element span full row and apply width + ml */
-  .demo-scope .span-override-demo {
-    grid-column: 1 / -1 !important;
-    box-sizing: border-box;
-  }
-  .demo-scope .span-override-demo[data-col="11"] { width: calc((100% + var(--tw-layout-gap)) * 11 / 12 - var(--tw-layout-gap)); }
-  .demo-scope .span-override-demo[data-col="10"] { width: calc((100% + var(--tw-layout-gap)) * 10 / 12 - var(--tw-layout-gap)); }
-  .demo-scope .span-override-demo[data-col="9"]  { width: calc((100% + var(--tw-layout-gap)) * 9  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .span-override-demo[data-col="8"]  { width: calc((100% + var(--tw-layout-gap)) * 8  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .span-override-demo[data-col="7"]  { width: calc((100% + var(--tw-layout-gap)) * 7  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .span-override-demo[data-col="6"]  { width: calc((100% + var(--tw-layout-gap)) * 6  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .span-override-demo[data-col="5"]  { width: calc((100% + var(--tw-layout-gap)) * 5  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .span-override-demo[data-col="4"]  { width: calc((100% + var(--tw-layout-gap)) * 4  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .span-override-demo[data-col="3"]  { width: calc((100% + var(--tw-layout-gap)) * 3  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .span-override-demo[data-col="2"]  { width: calc((100% + var(--tw-layout-gap)) * 2  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .span-override-demo[data-col="1"]  { width: calc((100% + var(--tw-layout-gap)) * 1  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .span-override-demo[data-offset="1"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 1  / 24); }
-  .demo-scope .span-override-demo[data-offset="2"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 2  / 24); }
-  .demo-scope .span-override-demo[data-offset="3"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 3  / 24); }
-  .demo-scope .span-override-demo[data-offset="4"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 4  / 24); }
-  .demo-scope .span-override-demo[data-offset="5"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 5  / 24); }
-  .demo-scope .span-override-demo[data-offset="6"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 6  / 24); }
-  .demo-scope .span-override-demo[data-offset="7"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 7  / 24); }
-  .demo-scope .span-override-demo[data-offset="8"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 8  / 24); }
-  .demo-scope .span-override-demo[data-offset="9"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 9  / 24); }
-  .demo-scope .span-override-demo[data-offset="10"] { margin-left: calc((100% + var(--tw-layout-gap)) * 10 / 24); }
-  .demo-scope .span-override-demo[data-offset="11"] { margin-left: calc((100% + var(--tw-layout-gap)) * 11 / 24); }
-}
-
-/* Approach B: inner wrapper centered by width + left margin */
-@media (min-width: 64rem) {
-  .demo-scope .offset-inner { box-sizing: border-box; }
-  .demo-scope .offset-inner[data-col="11"] { width: calc((100% + var(--tw-layout-gap)) * 11 / 12 - var(--tw-layout-gap)); }
-  .demo-scope .offset-inner[data-col="10"] { width: calc((100% + var(--tw-layout-gap)) * 10 / 12 - var(--tw-layout-gap)); }
-  .demo-scope .offset-inner[data-col="9"]  { width: calc((100% + var(--tw-layout-gap)) * 9  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .offset-inner[data-col="8"]  { width: calc((100% + var(--tw-layout-gap)) * 8  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .offset-inner[data-col="7"]  { width: calc((100% + var(--tw-layout-gap)) * 7  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .offset-inner[data-col="6"]  { width: calc((100% + var(--tw-layout-gap)) * 6  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .offset-inner[data-col="5"]  { width: calc((100% + var(--tw-layout-gap)) * 5  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .offset-inner[data-col="4"]  { width: calc((100% + var(--tw-layout-gap)) * 4  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .offset-inner[data-col="3"]  { width: calc((100% + var(--tw-layout-gap)) * 3  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .offset-inner[data-col="2"]  { width: calc((100% + var(--tw-layout-gap)) * 2  / 12 - var(--tw-layout-gap)); }
-  .demo-scope .offset-inner[data-col="1"]  { width: calc((100% + var(--tw-layout-gap)) * 1  / 12 - var(--tw-layout-gap)); }
-
-  /* left margin = (100% + gap) * offset/24 */
-  .demo-scope .offset-inner[data-offset="1"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 1  / 24); }
-  .demo-scope .offset-inner[data-offset="2"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 2  / 24); }
-  .demo-scope .offset-inner[data-offset="3"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 3  / 24); }
-  .demo-scope .offset-inner[data-offset="4"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 4  / 24); }
-  .demo-scope .offset-inner[data-offset="5"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 5  / 24); }
-  .demo-scope .offset-inner[data-offset="6"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 6  / 24); }
-  .demo-scope .offset-inner[data-offset="7"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 7  / 24); }
-  .demo-scope .offset-inner[data-offset="8"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 8  / 24); }
-  .demo-scope .offset-inner[data-offset="9"]  { margin-left: calc((100% + var(--tw-layout-gap)) * 9  / 24); }
-  .demo-scope .offset-inner[data-offset="10"] { margin-left: calc((100% + var(--tw-layout-gap)) * 10 / 24); }
-  .demo-scope .offset-inner[data-offset="11"] { margin-left: calc((100% + var(--tw-layout-gap)) * 11 / 24); }
-}
-
-/* Approach A sm special-cases: keep native width (50%), only add left margin */
-.demo-scope .span-override-demo[data-offset="10"][data-col="2"] { margin-left: 12.5%; }
-.demo-scope .span-override-demo[data-offset="11"][data-col="1"] { margin-left: 12.5%; }
-
-/* ================================
-   OFFSET RULES MOVED FROM PRESET (DEMO-ONLY)
-   ================================ */
-/* sm-only quick baseline */
-@media (max-width: 47.999rem) {
-  .demo-scope .offset-demo .rack .col-2.offset-10,
-  .demo-scope .offset-demo .rack .col-1.offset-11 { grid-column: 1 / -1; }
-  .demo-scope .offset-demo .rack .col-2.offset-10,
-  .demo-scope .offset-demo .rack .col-1.offset-11 { width: 50%; margin-left: 25%; }
-}
-
-/* md-only faux centering */
-@media (min-width: 48rem) and (max-width: 63.999rem) {
-  .demo-scope .offset-demo .rack .col-6.offset-6  { grid-column: 1 / -1; width: 83.333%; margin-left: 8.333%; }
-  .demo-scope .offset-demo .rack .col-5.offset-7  { grid-column: 1 / -1; width: 75%;     margin-left: 12.5%;  }
-  .demo-scope .offset-demo .rack .col-4.offset-8  { grid-column: 1 / -1; width: 58.333%; margin-left: 20.833%; }
-  .demo-scope .offset-demo .rack .col-3.offset-9  { grid-column: 1 / -1; width: 41.667%; margin-left: 29.166%; }
-  .demo-scope .offset-demo .rack .col-2.offset-10 { grid-column: 1 / -1; width: 25%;     margin-left: 37.5%;  }
-  .demo-scope .offset-demo .rack .col-1.offset-11 { grid-column: 1 / -1; width: 16.667%; margin-left: 41.666%; }
-}
+  /* (Removed) Approach A/B helper classes and demo-only sm/md hacks for lean build */
 
 /* lg demo complementary examples */
 @media (min-width: 64rem) {
