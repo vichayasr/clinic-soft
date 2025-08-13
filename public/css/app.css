@@ -206,9 +206,6 @@
   .col-9 {
     grid-column: 9;
   }
-  .col-10 {
-    grid-column: 10;
-  }
   .col-11 {
     grid-column: 11;
   }
@@ -251,11 +248,14 @@
   .hidden {
     display: none;
   }
+  .inline-flex {
+    display: inline-flex;
+  }
   .h-8 {
     height: calc(var(--spacing) * 8);
   }
-  .h-20 {
-    height: calc(var(--spacing) * 20);
+  .h-24 {
+    height: calc(var(--spacing) * 24);
   }
   .w-8 {
     width: calc(var(--spacing) * 8);
@@ -296,6 +296,9 @@
   }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
+  }
+  .px-8 {
+    padding-inline: calc(var(--spacing) * 8);
   }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);

@@ -20,13 +20,39 @@
     </div>
   </div>
 
-  <div class="rack text-gray-900">
+  <div class="page-wrapper">
+    <div class="demo-controls" style="margin: 8px 0 12px;">
+      <label class="inline-flex items-center gap-2 text-sm">
+        <input type="checkbox" id="rack-rail-toggle" />
+        <span>Rail mode</span>
+      </label>
+    </div>
+  </div>
+
+  <div id="col-width-container" class="rack text-gray-900">
     <% (1..12).each do |i| %>
       <div class="col-<%= i %>">
         <strong>col-<%= i %></strong>
       </div>
     <% end %>
   </div>
+  <script>
+    (function() {
+      var toggle = document.getElementById('rack-rail-toggle');
+      var container = document.getElementById('col-width-container');
+      if (toggle && container) {
+        toggle.addEventListener('change', function () {
+          if (this.checked) {
+            container.classList.remove('rack');
+            container.classList.add('rail');
+          } else {
+            container.classList.remove('rail');
+            container.classList.add('rack');
+          }
+        });
+      }
+    })();
+  </script>
   </section>
 
   <section>
