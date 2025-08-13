@@ -118,7 +118,7 @@
     viewportRemInput.type = 'text';
     viewportRemInput.id = 'viewport-rem-input';
     viewportRemInput.className = 'viewport-input viewport-input-rem';
-    viewportRemInput.placeholder = '75.00rem × 50.00rem';
+    viewportRemInput.placeholder = '75.00 × 50.00 rem';
     viewportRemInput.readOnly = true;
 
     var dropdownMenu = document.createElement('div');
@@ -180,7 +180,7 @@
     function updateViewportDisplay() {
       if (viewportInput) {
         const breakpoint = getCurrentBreakpoint();
-        viewportInput.value = `${currentViewportWidth} × ${currentViewportHeight}px (${breakpoint})`;
+        viewportInput.value = `${currentViewportWidth} × ${currentViewportHeight} px (${breakpoint})`;
         
         // Remove previous breakpoint classes
         viewportInput.classList.remove('sm', 'md', 'lg', 'xl');
@@ -199,7 +199,7 @@
         } catch (e) {}
         var widthRem = (currentViewportWidth / rootFontSizePx).toFixed(2);
         var heightRem = (currentViewportHeight / rootFontSizePx).toFixed(2);
-        viewportRemInput.value = `${widthRem}rem × ${heightRem}rem`;
+        viewportRemInput.value = `${widthRem} × ${heightRem} rem`;
       }
     }
 
