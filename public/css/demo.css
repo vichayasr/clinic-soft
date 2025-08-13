@@ -27,6 +27,10 @@ body {
 .site-cta { background-color: rgba(55, 55, 55, 0.55); color: #fff; padding: 0.5rem 1rem; border-radius: 0.5rem; margin-left: 1rem;}
 .site-cta:hover { background-color: rgba(86,86,86,0.2); }
 
+/* Footer mirrors header styling */
+.site-footer { background-color: #e4f2ff; }
+.site-footer-text { color: #565656; }
+
 /* Add subtle background pattern */
 body::before {
   content: '';
@@ -270,7 +274,6 @@ input[type="radio"] {
 
 /* Comparison demo helpers (lg only for clarity) */
 @media (min-width: 64rem) {
-  /* (Removed) Approach A/B helper classes and demo-only sm/md hacks for lean build */
 
 /* lg demo complementary examples */
 @media (min-width: 64rem) {
