@@ -7,8 +7,7 @@
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.11",
-    "tailwindcss": "^4.1.11",
-    "@psp/layout": "file:packages/@psp/layout",
-    "@psp/debug-mode": "file:packages/@psp/debug-mode"
+    "tailwindcss": "^4.1.11"
   }
 }
+

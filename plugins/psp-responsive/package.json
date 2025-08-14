@@ -1,0 +1,62 @@
+{
+  "name": "psp-layout",
+  "version": "1.0.0",
+  "description": "CSS Grid (Rack) + Flexbox (Rail) layout system with Tailwind CSS v4 integration - PSP Layout Plugin",
+  "author": "Pattaya Upara <everysundays@gmail.com>",
+  "license": "MIT",
+  "main": "styles/preset.css",
+  "keywords": [
+    "css",
+    "grid",
+    "flexbox",
+    "layout",
+    "responsive",
+    "tailwind",
+    "psp",
+    "rack",
+    "rail"
+  ],
+  "files": [
+    "styles/",
+    "doc/",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psp-asia/psp-layout"
+  },
+  "bugs": {
+    "url": "https://github.com/psp-asia/psp-layout/issues"
+  },
+  "homepage": "https://github.com/psp-asia/psp-layout#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^4.0.0"
+  },
+  "scripts": {
+    "build": "echo 'CSS-first configuration - no build step required'",
+    "test": "npm run test:jest",
+    "test:jest": "jest --config=../../jest.config.js",
+    "version": "npm version"
+  },
+  "config": {
+    "pluginType": "layout-system",
+    "compatibility": {
+      "tailwind": ">=4.0.0",
+      "browsers": [
+        "Chrome >= 57",
+        "Firefox >= 52", 
+        "Safari >= 12",
+        "Edge >= 16"
+      ],
+      "features": [
+        "CSS Grid",
+        "Flexbox",
+        "CSS Custom Properties",
+        "Media Queries"
+      ]
+    }
+  }
+} 
