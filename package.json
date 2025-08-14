@@ -1,6 +1,10 @@
 {
   "name": "sinatra-template",
   "private": true,
+  "dependencies": {
+    "@psp/layout": "file:../../../psp-designertools/packages/@psp/layout",
+    "@psp/debug-mode": "file:../../../psp-designertools/packages/@psp/debug-mode"
+  },
   "scripts": {
     "dev": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/app.css --watch",
     "build": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/app.css --minify"
