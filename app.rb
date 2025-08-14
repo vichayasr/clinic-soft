@@ -7,10 +7,7 @@ set :views, File.join(__dir__, "views")
 get "/" do
   @page_title = "Home"
   @get_styles = ["/css/demo.css"]
-  @get_scripts = []
-  if ENV["DEBUG_UI"] == "1" || params["debug"] == "1"
-    @get_scripts << "/plugins/psp-layout/scripts/debug-mode.js"
-  end
+  @get_scripts = ["/plugins/psp-responsive/scripts/debug-mode.js"]
   erb :"demo-index"
 end
 

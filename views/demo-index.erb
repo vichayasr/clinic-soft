@@ -1,15 +1,14 @@
 <%# Page asset config now set in app.rb %>
 
-<div class="demo-scope">
-  <div class="page-wrapper">
+<div class="w-full max-w-none mx-auto">
   <h1>DEV/TEMPLATE</h1>
   <p>A responsive grid system with two container types: <strong>Rack</strong> (end-to-end col- that wrap) and <strong>Rail</strong> (horizontally scrollable rows).</p>
-  </div>
+</div>
 
 <section>
-  <div class="page-wrapper">
+  <div class="w-full max-w-none mx-auto">
     <h2>Column Width Demo</h2>
-    <div class="code-block">
+    <div class="bg-gradient-to-br from-slate-800 to-slate-700 text-slate-200 rounded-xl p-6 overflow-x-auto mb-6 relative border border-slate-600 shadow-lg">
       <pre>&lt;div class="rack"&gt;
   &lt;div class="col-1"&gt;col-1&lt;/div&gt;
   &lt;div class="col-2"&gt;col-2&lt;/div&gt;
@@ -20,11 +19,13 @@
     </div>
   </div>
 
-  <div class="page-wrapper">
-    <div class="demo-controls">
-      <button id="big-rack-rail-toggle" class="big-toggle" type="button" aria-pressed="false">
-        <span class="toggle-visual" aria-hidden="true"><span class="thumb"></span></span>
-        <span class="label-text"><span class="mode-label">Rack</span></span>
+  <div class="w-full max-w-none mx-auto">
+    <div class="mb-5">
+      <button id="big-rack-rail-toggle" class="inline-flex items-center gap-2.5 rounded-full border-2 border-slate-300 bg-slate-100 text-slate-900 cursor-pointer select-none transition-all duration-200 hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-200" type="button" aria-pressed="false">
+        <span class="relative w-18 h-9 bg-gray-300 rounded-full border border-gray-400 transition-all duration-200 flex-shrink-0" aria-hidden="true">
+          <span class="absolute top-0.5 left-0.5 w-7.5 h-7.5 bg-white rounded-full shadow-md transition-transform duration-200 ease-out"></span>
+        </span>
+        <span class="font-bold text-sm tracking-wide"><span class="mode-label">Rack</span></span>
       </button>
     </div>
   </div>
@@ -37,42 +38,14 @@
     <% end %>
   </div>
   <script src="/js/demo-toggle.js"></script>
-  </section>
+</section>
 
-  <section>
-  <div class="page-wrapper">
-    <h2>Indentation POC (3 ways without offset-*)</h2>
-    <p>Spacer element, inner wrapper margin, and row padding. Demo-only helpers; engine math unchanged.</p>
-  </div>
-
-  <!-- 1) Spacer element: consumes grid tracks invisibly -->
-  <div class="rack">
-    <div class="spacer col-3"></div>
-    <div class="col-3"><strong>spacer col-3</strong></div>
-    <div class="col-6"><strong>content col-6</strong></div>
-  </div>
-
-  <!-- 2) Inner wrapper margin: shift content inside its cell -->
-  <div class="rack indent indent-2">
-    <div class="col-12">
-      <div class="indent-inner"><strong>indent-inner (2/12)</strong></div>
-    </div>
-  </div>
-
-  <!-- 3) Row-level padding: shift entire rack content -->
-  <div class="rack row-indent-2">
-    <div class="col-4"><strong>row-indent (2/12)</strong></div>
-    <div class="col-4"><strong>col-4</strong></div>
-    <div class="col-4"><strong>col-4</strong></div>
-  </div>
-  </section>
-
-  <section>
-  <div class="page-wrapper">
+<section>
+  <div class="w-full max-w-none mx-auto">
     <h2>Offset row test</h2>
-    <p>Check if <code>.offset-2.col-2</code> and <code>.col-8</code> sit on the same row.</p>
+    <p>Check if <code class="bg-gray-100 rounded text-sm font-mono">.offset-2.col-2</code> and <code class="bg-gray-100 rounded text-sm font-mono">.col-8</code> sit on the same row.</p>
   </div>
-  <div class="rack offset-row-test">
+  <div class="rack mb-2.5">
     <div class="col-2 offset-2"><strong>offset-2 + col-2</strong></div>
     <div class="col-8"><strong>col-8</strong></div>
   
@@ -100,10 +73,10 @@
     <div class="col-2 offset-6"><strong>offset-6 + col-2</strong></div>
     <div class="col-4"><strong>col-4</strong></div>
   </div>
-  </section>
+</section>
 
-  <section>
-  <div class="page-wrapper">
+<section>
+  <div class="w-full max-w-none mx-auto">
     <h2>Responsive col- Example (Rack Container Only)</h2>
   </div>
 
@@ -137,16 +110,16 @@
       <% end %>
     <% end %>
   </div>
-  </section>
+</section>
 
-  <section>
-  <div class="page-wrapper">
+<section>
+  <div class="w-full max-w-none mx-auto">
     <h2>Complementary Offset Examples</h2>
     <p>Demonstration of how offsets interact with complementary col-sizes (offset + col-= 12)</p>
     <p>Each example shows how different offset values create centered positioning for the col-. The offset applies half of the calculated margin to the left, visually centering the column with remaining space appearing on the right.</p>
   </div>
 
-  <div class="offset-demo">
+  <div class="mb-2.5">
     <div class="rack">
       <div class="col-12">
         <strong>offset-0 + col-12</strong>
@@ -161,6 +134,4 @@
       <% end %>
     </div>
   </div>
-  </section>
-
-</div>
+</section>
