@@ -4,4 +4,7 @@
 
 /* Project entry stylesheet. Presets are provided by the plugin preset import above. */
 
+/* Tailwind plugins */
+@import "./plugins.css";
+
 
