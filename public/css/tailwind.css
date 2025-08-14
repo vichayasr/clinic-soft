@@ -1,10 +1,8 @@
 @import "tailwindcss";
 /* Use the layout grid from @psp/layout via node_modules. */
 @import "@psp/layout/grid.css";
-
-/* Project entry stylesheet. Presets are provided by the plugin preset import above. */
-
 /* Tailwind plugins */
 @import "./plugins.css";
 
+/* Project entry stylesheet. Presets are provided by the plugin preset import above. */
 

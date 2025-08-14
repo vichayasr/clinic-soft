@@ -1,8 +1,12 @@
 <%# Page asset config now set in app.rb %>
 
 <div class="w-full max-w-none mx-auto">
-  <h1>DEV/TEMPLATE</h1>
-  <p>A responsive grid system with two container types: <strong>Rack</strong> (end-to-end col- that wrap) and <strong>Rail</strong> (horizontally scrollable rows).</p>
+  <div class="alert alert-info mb-5">
+    <span>Rack & Rail grid demo uses Tailwind utilities + custom layout classes.</span>
+  </div>
+  <h1 class="text-3xl font-bold mb-2">DEV/TEMPLATE</h1>
+  <p class="mb-4">A responsive grid system with two container types: <strong>Rack</strong> (end-to-end col- that wrap) and <strong>Rail</strong> (horizontally scrollable rows).
+  </p>
   </div>
 
 <section>
@@ -20,13 +24,11 @@
   </div>
 
   <div class="w-full max-w-none mx-auto">
-    <div class="mb-5">
-      <button id="big-rack-rail-toggle" class="inline-flex items-center gap-2.5 rounded-full border-2 border-slate-300 bg-slate-100 text-slate-900 cursor-pointer select-none transition-all duration-200 hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-200" type="button" aria-pressed="false">
-        <span class="relative w-18 h-9 bg-gray-300 rounded-full border border-gray-400 transition-all duration-200 flex-shrink-0" aria-hidden="true">
-          <span class="absolute top-0.5 left-0.5 w-7.5 h-7.5 bg-white rounded-full shadow-md transition-transform duration-200 ease-out"></span>
-        </span>
-        <span class="font-bold text-sm tracking-wide"><span class="mode-label">Rack</span></span>
+    <div class="mb-5 join">
+      <button id="big-rack-rail-toggle" class="btn btn-outline join-item" type="button" aria-pressed="false">
+        <span class="mode-label">Rack</span>
       </button>
+      <a href="#col-width-container" class="btn btn-ghost join-item">Scroll to grid</a>
     </div>
   </div>
 
