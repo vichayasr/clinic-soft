@@ -1,6 +1,6 @@
 @import "tailwindcss";
 /* Use the built CSS preset for the demo so styles exist at runtime. */
-@import "../../plugins/psp-layout/styles/preset.css";
+@import "../../plugins/psp-responsive/styles/preset.css";
 
 /* Project entry stylesheet. Presets are provided by the plugin preset import above. */
 

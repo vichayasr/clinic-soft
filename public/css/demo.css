@@ -1,453 +1,88 @@
 /* 
  * Demo Styles for Rack & Rail Grid System
- * Contains ONLY visual styling for demo page - no grid system logic
- * Grid system classes (.rack, .rail, .col-, .offset) handle width/layout only
- * 
- * This file can be safely removed when not using the demo page.
+ * Contains semantic typography foundations and demo column styling only
  */
 
 /* ================================
-   BASE STYLES
+   SEMANTIC TYPOGRAPHY FOUNDATIONS
    ================================ */
 body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: #1f2937;
   margin: 0;
   min-width: 320px;
-  padding-top: 0;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
   line-height: 1.6;
 }
 
-/* Header and nav branding extracted from views */
-.site-header { background-color: #e4f2ff; }
-.site-brand { color: #565656; }
-.site-nav-link { color: #565656; }
-.site-nav-link:hover { color: #333; }
-.site-cta { background-color: rgba(55, 55, 55, 0.55); color: #fff; padding: 0.5rem 1rem; border-radius: 0.5rem; margin-left: 1rem;}
-.site-cta:hover { background-color: rgba(86,86,86,0.2); }
-
-/* Footer mirrors header styling */
-.site-footer { background-color: #e4f2ff; }
-.site-footer-text { color: #565656; }
-
-/* ================================
-   INDENTATION POC HELPERS (demo-only)
-   ================================ */
-/* Spacer occupies grid space but is invisible */
-.demo-scope .spacer {
-  visibility: hidden;
-  pointer-events: none;
-  min-height: 0;
-  padding: 0 !important;
-  border: 0 !important;
-}
-
-/* Inner-indent pattern: wrap content and shift it left by N/12 of rack width */
-.demo-scope .indent .indent-inner { min-width: 0; }
-.demo-scope .indent-1 .indent-inner { margin-left: calc((100% + var(--psp-gap, 1rem)) * 1 / 12); }
-.demo-scope .indent-2 .indent-inner { margin-left: calc((100% + var(--psp-gap, 1rem)) * 2 / 12); }
-.demo-scope .indent-3 .indent-inner { margin-left: calc((100% + var(--psp-gap, 1rem)) * 3 / 12); }
-
-/* Row-indent pattern: shift entire rack content to the right by N/12 */
-.demo-scope .row-indent-1 { padding-left: calc((100% + var(--psp-gap, 1rem)) * 1 / 12); box-sizing: border-box; }
-.demo-scope .row-indent-2 { padding-left: calc((100% + var(--psp-gap, 1rem)) * 2 / 12); box-sizing: border-box; }
-.demo-scope .row-indent-3 { padding-left: calc((100% + var(--psp-gap, 1rem)) * 3 / 12); box-sizing: border-box; }
-
-/* Add subtle background pattern */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(circle at 1px 1px, rgba(139, 92, 246, 0.05) 1px, transparent 0);
-  background-size: 20px 20px;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.page-wrapper {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 1.25rem;
-  box-sizing: border-box;
-}
-
-/* Modern Typography */
 h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 800;
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   color: #000000;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   color: #1f2937;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  position: relative;
-  padding-bottom: 0.5rem;
 }
 
-h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 3rem;
-  height: 3px;
-  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
-  border-radius: 2px;
+section {
+  margin-bottom: 2rem;
 }
 
 /* Responsive typography */
 @media (max-width: 48rem) {
   h1 {
-    font-size: 2.25rem;
+    font-size: 2rem;
   }
   
   h2 {
-    font-size: 1.5rem;
-    margin-top: 2rem;
+    font-size: 1.25rem;
+    margin-top: 1.5rem;
   }
 }
 
-section {
-  margin-bottom: 2.5rem;
-  border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 2.5rem;
-}
-
 /* ================================
-   DEMO UI CONTROLS
-   ================================ */
-.toggle-container {
-  margin-bottom: 1.25rem;
-}
-
-.big-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 9999px;
-  border: 2px solid #cbd5e1;
-  background: #f1f5f9;
-  color: #0f172a;
-  cursor: pointer;
-  user-select: none;
-  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s, color 0.2s;
-}
-
-.big-toggle:focus {
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
-}
-
-.big-toggle .toggle-visual {
-  position: relative;
-  width: 72px;
-  height: 36px;
-  background: #e5e7eb;
-  border-radius: 9999px;
-  border: 1px solid #d1d5db;
-  transition: background-color 0.2s, border-color 0.2s;
-  flex-shrink: 0;
-}
-
-.big-toggle .thumb {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 30px;
-  height: 30px;
-  background: white;
-  border-radius: 9999px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease;
-}
-
-.big-toggle[aria-pressed="true"] .toggle-visual {
-  background: #dbeafe;
-  border-color: #60a5fa;
-}
-
-.big-toggle[aria-pressed="true"] .thumb {
-  transform: translateX(36px);
-}
-
-.big-toggle .label-text {
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.01em;
-}
-
-.toggle-switch {
-  display: flex;
-  margin-bottom: 1.25rem;
-  max-width: 18.75rem;
-}
-
-.toggle-switch label {
-  flex: 1;
-  text-align: center;
-  padding: 0.625rem;
-  background-color: #e2e8f0;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  user-select: none;
-}
-
-.toggle-switch label:first-child {
-  border-radius: 0.25rem 0 0 0.25rem;
-}
-
-.toggle-switch label:last-child {
-  border-radius: 0 0.25rem 0.25rem 0;
-}
-
-input[type="radio"] {
-  display: none;
-}
-
-#rack-toggle:checked ~ .toggle-switch .rack-label {
-  background-color: #8b5cf6;
-  color: white;
-}
-
-#rail-toggle:checked ~ .toggle-switch .rail-label {
-  background-color: #2d6edf;
-  color: white;
-}
-
-/* ================================
-   COLUMN DEMO STYLING
+   DEMO COLUMN STYLING
    ================================ */
 
-/* Base visual styling for all demo columns */
-.demo-scope .rack > [class*="col-"],
-.demo-scope .rail > [class*="col-"] {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
+/* Demo column layout and styling */
+.rack > [class*="col-"],
+.rail > [class*="col-"] {
   position: relative;
-  min-height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.5rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  padding: 0.5rem;
+  min-height: 2rem;
+  border-radius: 0.25rem;
 }
 
-/* Default padding when no Tailwind utilities present */
-.demo-scope .rack > [class*="col-"]:not([class*="p-"]):not([class*="py-"]):not([class*="px-"]):not([class*="pt-"]):not([class*="pb-"]):not([class*="pl-"]):not([class*="pr-"]),
-.demo-scope .rail > [class*="col-"]:not([class*="p-"]):not([class*="py-"]):not([class*="px-"]):not([class*="pt-"]):not([class*="pb-"]):not([class*="pl-"]):not([class*="pr-"]) {
-  padding: 0.625rem;
-}
-
-/* Color schemes */
-.demo-scope .rack > [class*="col-"] {
+/* Demo color schemes */
+.rack > [class*="col-"] {
   background-color: #f3e8ff;
   border: 1px solid #d8b4fe;
 }
 
-.demo-scope .rail > [class*="col-"] {
+.rail > [class*="col-"] {
   background-color: #dbeafe;
   border: 1px solid #60a5fa;
 }
 
 /* Content styling */
-.demo-scope .rack > [class*="col-"] > span {
+.rack > [class*="col-"] > span {
   font-size: 0.875rem;
   color: #6b21a8;
 }
 
-.demo-scope .rail > [class*="col-"] > span {
+.rail > [class*="col-"] > span {
   font-size: 0.875rem;
   color: #1e40af;
-}
-
-
-/* ================================
-   OFFSET DEMO SECTION
-   ================================ */
-.demo-scope .offset-demo .rack {
-  margin-bottom: 0.625rem;
-  row-gap: 1rem; /* ensure consistent vertical spacing between rows */
-}
-
-.demo-scope .offset-demo .rack > [class*="col-"] {
-  min-height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.5rem;
-}
-
-/* lg demo complementary examples */
-@media (min-width: 64rem) {
-  .demo-scope .offset-demo .rack .col-11.offset-1  { grid-column: 1 / -1; width: 91.667%; margin-left: 4.166%; }
-  .demo-scope .offset-demo .rack .col-10.offset-2  { grid-column: 1 / -1; width: 83.333%; margin-left: 8.333%; }
-  .demo-scope .offset-demo .rack .col-9.offset-3   { grid-column: 1 / -1; width: 75%;     margin-left: 12.5%; }
-  .demo-scope .offset-demo .rack .col-8.offset-4   { grid-column: 1 / -1; width: 66.667%; margin-left: 16.667%; }
-  .demo-scope .offset-demo .rack .col-7.offset-5   { grid-column: 1 / -1; width: 58.333%; margin-left: 20.833%; }
-  .demo-scope .offset-demo .rack .col-6.offset-6   { grid-column: 1 / -1; width: 50%;     margin-left: 25%; }
-  .demo-scope .offset-demo .rack .col-5.offset-7   { grid-column: 1 / -1; width: 41.667%; margin-left: 29.166%; }
-  .demo-scope .offset-demo .rack .col-4.offset-8   { grid-column: 1 / -1; width: 33.333%; margin-left: 33.333%; }
-  .demo-scope .offset-demo .rack .col-3.offset-9   { grid-column: 1 / -1; width: 25%;     margin-left: 37.5%; }
-  .demo-scope .offset-demo .rack .col-2.offset-10  { grid-column: 1 / -1; width: 16.667%; margin-left: 41.666%; }
-  .demo-scope .offset-demo .rack .col-1.offset-11  { grid-column: 1 / -1; width: 8.333%;  margin-left: 45.833%; }
-
-  /* Offset row test placements */
-  .demo-scope .offset-demo .rack .col-2.offset-2 + .col-8 { grid-column: 7 / span 16; }
-  .demo-scope .offset-demo .rack .col-2.offset-1 + .col-9 { grid-column: 6 / span 18; }
-  .demo-scope .offset-demo .rack .col-3.offset-1 + .col-8 { grid-column: 8 / span 16; }
-  .demo-scope .offset-demo .rack .col-3.offset-2 + .col-7 { grid-column: 9 / span 14; }
-  .demo-scope .offset-demo .rack .col-2.offset-3 + .col-7 { grid-column: 8 / span 14; }
-  .demo-scope .offset-demo .rack .col-4.offset-4 + .col-4 { grid-column: 13 / span 8; }
-  .demo-scope .offset-demo .rack .col-3.offset-5 + .col-4 { grid-column: 12 / span 8; }
-  .demo-scope .offset-demo .rack .col-4.offset-2 + .col-6 { grid-column: 11 / span 12; }
-  .demo-scope .offset-demo .rack .col-2.offset-6 + .col-4 { grid-column: 11 / span 8; }
-
-  /* First item placements */
-  .demo-scope .offset-demo .rack .col-2.offset-2 { grid-column: 3 / span 4; }
-  .demo-scope .offset-demo .rack .col-2.offset-1 { grid-column: 2 / span 4; }
-  .demo-scope .offset-demo .rack .col-3.offset-1 { grid-column: 2 / span 6; }
-  .demo-scope .offset-demo .rack .col-3.offset-2 { grid-column: 3 / span 6; }
-  .demo-scope .offset-demo .rack .col-2.offset-3 { grid-column: 4 / span 4; }
-  .demo-scope .offset-demo .rack .col-4.offset-4 { grid-column: 5 / span 8; }
-  .demo-scope .offset-demo .rack .col-3.offset-5 { grid-column: 6 / span 6; }
-  .demo-scope .offset-demo .rack .col-4.offset-2 { grid-column: 3 / span 8; }
-  .demo-scope .offset-demo .rack .col-2.offset-6 { grid-column: 7 / span 4; }
-}
-
-/* lg: explicit placements for Offset row test (demo-only) */
-@media (min-width: 64rem) {
-  /* Second item placements to align on same row */
-  .demo-scope .offset-row-test .col-2.offset-2 + .col-8 { grid-column: 7 / span 16; }
-  .demo-scope .offset-row-test .col-2.offset-1 + .col-9 { grid-column: 6 / span 18; }
-  .demo-scope .offset-row-test .col-3.offset-1 + .col-8 { grid-column: 8 / span 16; }
-  .demo-scope .offset-row-test .col-3.offset-2 + .col-7 { grid-column: 9 / span 14; }
-  .demo-scope .offset-row-test .col-2.offset-3 + .col-7 { grid-column: 8 / span 14; }
-  .demo-scope .offset-row-test .col-4.offset-4 + .col-4 { grid-column: 13 / span 8; }
-  .demo-scope .offset-row-test .col-3.offset-5 + .col-4 { grid-column: 12 / span 8; }
-  .demo-scope .offset-row-test .col-4.offset-2 + .col-6 { grid-column: 11 / span 12; }
-  .demo-scope .offset-row-test .col-2.offset-6 + .col-4 { grid-column: 11 / span 8; }
-
-  /* First item placements for clarity (match offset math on 24 tracks) */
-  .demo-scope .offset-row-test .col-2.offset-2 { grid-column: 3 / span 4; }
-  .demo-scope .offset-row-test .col-2.offset-1 { grid-column: 2 / span 4; }
-  .demo-scope .offset-row-test .col-3.offset-1 { grid-column: 2 / span 6; }
-  .demo-scope .offset-row-test .col-3.offset-2 { grid-column: 3 / span 6; }
-  .demo-scope .offset-row-test .col-2.offset-3 { grid-column: 4 / span 4; }
-  .demo-scope .offset-row-test .col-4.offset-4 { grid-column: 5 / span 8; }
-  .demo-scope .offset-row-test .col-3.offset-5 { grid-column: 6 / span 6; }
-  .demo-scope .offset-row-test .col-4.offset-2 { grid-column: 3 / span 8; }
-  .demo-scope .offset-row-test .col-2.offset-6 { grid-column: 7 / span 4; }
-}
-
-
-/* ================================
-   INFORMATIONAL SECTIONS
-   ================================ */
-.formulas {
-  background: linear-gradient(135deg, #f9fafb, #f3f4f6);
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  position: relative;
-}
-
-.formulas::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #8b5cf6, #3b82f6);
-  border-radius: 0.75rem 0.75rem 0 0;
-}
-
-.formulas ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.formulas li {
-  margin-bottom: 0.625rem;
-  font-family: monospace;
-  font-size: 0.875rem;
-}
-
-/* Enhanced Code Blocks */
-.code-block {
-  background: linear-gradient(145deg, #1e293b, #334155);
-  color: #e2e8f0;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  overflow-x: auto;
-  margin-bottom: 1.5rem;
-  position: relative;
-  border: 1px solid #475569;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-.code-block::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #8b5cf6, #3b82f6);
-  border-radius: 0.75rem 0.75rem 0 0;
-}
-
-/* Footer extracted from views */
-.site-footer { border-color: rgba(86, 86, 86, 0.2); }
-.site-footer-text { color: #666; }
-
-.code-block pre {
-  margin: 0;
-  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: #f1f5f9;
-}
-
-
-.code-block pre::selection {
-  background: rgba(139, 92, 246, 0.3);
-}
-
-
-
-
-/* ================================
-   RESPONSIVE BEHAVIOR
-   ================================ */
-@media (max-width: 30rem) {
-  .toggle-switch {
-    flex-direction: column;
-  }
-
-  .toggle-switch label {
-    margin-bottom: 0.5rem;
-    border-radius: 0.25rem;
-  }
 }
