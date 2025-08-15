@@ -1,8 +1,8 @@
 @import "tailwindcss";
-/* Use the layout grid from @psp/layout via node_modules. */
 @import "@psp/layout/grid.css";
-/* Tailwind plugins */
-@import "./plugins.css";
+@plugin "daisyui" {
+  themes: ["light", "dark", "cupcake"];
+};
 
 /* Project entry stylesheet. Presets are provided by the plugin preset import above. */
 
