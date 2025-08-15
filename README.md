@@ -1,6 +1,20 @@
-# PSP Asia Dev Template (Sinatra + Tailwind v4 + DaisyUI)
+# PSP Asia Dev Template v2.0 (Sinatra + Tailwind v4 + DaisyUI)
 
-Minimal boilerplate for Sinatra + Tailwind v4 + DaisyUI with responsive grid system and light/dark theme support.
+Enhanced boilerplate for Sinatra + Tailwind v4 + DaisyUI with responsive grid system and light/dark theme support.
+
+## 🆕 What's New in v2.0
+
+### Content Comparison (v1 → v2):
+
+| **Your Original (v1)** | **Enhanced Version (v2)** |
+|-------------------------|----------------------------|
+| ✅ demo-index.erb | ✅ demo.erb (renamed + enhanced) |
+| ✅ Basic header | ✅ Header + theme switcher |
+| ✅ Simple layout | ✅ Layout + theme JavaScript |
+| ✅ Basic app.rb | ✅ app.rb + new routes |
+| ✅ Plain tailwind.css | ✅ tailwind.css + DaisyUI |
+| ❌ No homepage | ✅ New index.erb homepage |
+| ❌ No themes | ✅ Light/dark theme system |
 
 ## Features
 - ✨ **Light/Dark Theme Switcher** - Persistent theme toggle in navbar
@@ -83,6 +97,59 @@ Built with @psp/layout for responsive layouts:
 - The build process writes to `public/css/app.css`
 - DaisyUI themes configured in `tailwind.css` with `@plugin "daisyui"`
 - Theme switcher JavaScript included in `layout.erb`
+
+## 🔄 Upgrading from v1 to v2
+
+If you're upgrading from the previous version, follow these steps:
+
+### 1. **Update Dependencies**
+```bash
+# Install new dependencies
+npm install daisyui@^5.0.50 --save-dev
+
+# Update Tailwind to v4.1.12 (if needed)
+npm install tailwindcss@^4.1.12 @tailwindcss/cli@^4.1.12 --save-dev
+```
+
+### 2. **Update CSS Configuration**
+Replace your `public/css/tailwind.css` content with:
+```css
+@import "tailwindcss";
+@import "@psp/layout/grid.css";
+@plugin "daisyui" {
+  themes: ["light", "dark", "cupcake"];
+};
+
+/* Project entry stylesheet. Presets are provided by the plugin preset import above. */
+```
+
+### 3. **Update Package Dependencies** 
+Add to your `package.json`:
+```json
+{
+  "dependencies": {
+    "@psp/debug-mode": "file:../../../psp-designertools/packages/@psp/debug-mode",
+    "@psp/layout": "file:../../../psp-designertools/packages/@psp/layout"
+  }
+}
+```
+
+### 4. **Update Routes**
+Your `app.rb` will need these changes:
+- Add homepage route: `get "/" do`
+- Rename demo route to: `get "/demo" do`
+- Update asset serving paths for `@psp/debug-mode`
+
+### 5. **Create Missing Files**
+- Create `views/index.erb` for homepage
+- Rename `demo-index.erb` to `demo.erb`
+- Add theme switcher to `_header.erb`
+
+### 6. **Build and Test**
+```bash
+npm run build
+ruby app.rb
+```
 
 ## Dependencies
 - **Runtime**: Sinatra 4.1.1, Ruby 3.2.8
