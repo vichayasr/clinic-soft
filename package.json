@@ -2,8 +2,8 @@
   "name": "sinatra-template",
   "private": true,
   "dependencies": {
-    "@psp/debug-mode": "file:../packages/packages/@psp/debug-mode",
-    "@psp/layout": "file:../packages/packages/@psp/layout"
+    "@psp/debug-mode": "file:../packages/@psp/debug-mode",
+    "@psp/layout": "file:../packages/@psp/layout"
   },
   "scripts": {
     "dev": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/app.css --watch",
