@@ -2,12 +2,12 @@
   "name": "sinatra-template",
   "private": true,
   "dependencies": {
-    
+    "@psp/debug-mode": "^1.0.0",
+    "@psp/layout": "^1.0.0"
   },
   "scripts": {
     "dev": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/app.css --watch",
-    "build": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/app.css --minify",
-    "install-psp-packages": "mkdir -p node_modules/@psp && cp -r ../packages/@psp/* node_modules/@psp/ 2>/dev/null || echo 'Note: Run this from env/ directory after pulling latest packages'"
+    "build": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/app.css --minify"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.12",
