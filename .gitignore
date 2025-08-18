@@ -19,6 +19,7 @@ views/index.erb
 
 # Build outputs
 public/css/app.css
+public/css/tailwind.css
 
 # Environment files
 .env
