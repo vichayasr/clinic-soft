@@ -14,4 +14,14 @@ tmp/
 .vscode/
 .idea/
 
+# User customizations (protected from template updates)
+views/index.erb
+
+# Build outputs
+public/css/app.css
+
+# Environment files
+.env
+.env.local
+
 

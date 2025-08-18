@@ -52,14 +52,14 @@ section {
 .rail > [class*="col-"] {
   position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: flex-start;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   padding: 0.5rem;
   min-height: 2rem;
   border-radius: 0.25rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Demo color schemes */

@@ -10,13 +10,13 @@
     <% end %>
   </head>
   <body>
-    <%= erb :_header %>
+    <%= erb :header %>
 
     <main>
       <%= yield %>
     </main>
 
-    <%= erb :_footer %>
+    <%= erb :footer %>
     <script>
       // Theme switcher functionality
       document.addEventListener('DOMContentLoaded', function() {
@@ -30,9 +30,15 @@
         // Apply theme on load
         setTheme(currentTheme);
         
-        // Toggle theme on button click
+        // Toggle theme on button click (cycle: light → dark → light)
         themeToggle.addEventListener('click', function() {
-          const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          const current = document.documentElement.getAttribute('data-theme');
+          let newTheme;
+          if (current === 'light') {
+            newTheme = 'dark';
+          } else {
+            newTheme = 'light';
+          }
           setTheme(newTheme);
           localStorage.setItem('theme', newTheme);
         });
