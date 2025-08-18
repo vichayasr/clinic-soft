@@ -42,22 +42,25 @@
 .rack .col-11, .rack .col-12 { @apply col-span-4; }
 
 /* Semantic offset utilities - sm (4 tracks) */
-.rack .offset-1 { @apply col-start-2; }  /* Skip 1 semantic col (col-1 = 2 tracks) */
-.rack .offset-2 { @apply col-start-3; }  /* Skip 2 semantic cols (4 tracks) */  
-.rack .offset-3 { @apply col-start-4; }  /* Skip 3 semantic cols (6 tracks, but max 4) */
+.rack .offset-1, .rack .offset-2,.rack .offset-3,
+.rack .offset-4, .rack .offset-5, .rack .offset-6,
+.rack .offset-7, .rack .offset-8, .rack .offset-9 { @apply col-start-0; }
+.rack .offset-10, .rack .offset-11 { @apply col-start-2; }
 
 /* Rack: md (14 tracks) */
 @media (min-width: 48rem) {
   .rack { grid-template-columns: repeat(14, minmax(0, 1fr)); }
-  .rack .col-1, .rack .col-2 { @apply col-span-4; }
-  .rack .col-3, .rack .col-4 { @apply col-span-7; }
+  .rack .col-1, .rack .col-2 { @apply col-span-6; }
+  .rack .col-3, .rack .col-4 { @apply col-span-6; }
   .rack .col-5, .rack .col-6 { @apply col-span-10; }
   .rack .col-7, .rack .col-8, .rack .col-9, .rack .col-10, .rack .col-11, .rack .col-12 { @apply col-span-full; }
   
   /* Semantic offset utilities - md (14 tracks) */
-  .rack .offset-1 { @apply col-start-5; }   /* Skip col-1 (4 tracks) = start at 5 */
-  .rack .offset-2 { @apply col-start-9; }   /* Skip col-1+col-2 (8 tracks) = start at 9 */
-  .rack .offset-3 { @apply col-start-1; }   /* Skip col-1+col-2+col-3 (15 tracks > 14) = wrap to next row */
+  .rack .offset-1, .rack .offset-2,.rack .offset-3,
+  .rack .offset-4, .rack .offset-5 { @apply col-start-0; }
+  .rack .offset-6, .rack .offset-7 { @apply col-start-3; }
+  .rack .offset-8, .rack .offset-9 { @apply col-start-5; }
+  .rack .offset-10, .rack .offset-11 { @apply col-start-5; }
 }
 
 /* Rack: lg (24 tracks) */
@@ -75,14 +78,19 @@
   .rack .col-10 { @apply col-span-20; }
   .rack .col-11 { @apply col-span-22; }
   .rack .col-12 { @apply col-span-full; }
-  
+
   /* Semantic offset utilities - lg (24 tracks) */
-  .rack .offset-1 { @apply col-start-3; }   /* Skip col-1 (2 tracks) = start at 3 */
-  .rack .offset-2 { @apply col-start-7; }   /* Skip col-1+col-2 (2+4=6 tracks) = start at 7 */
-  .rack .offset-3 { @apply col-start-13; }  /* Skip col-1+col-2+col-3 (2+4+6=12 tracks) = start at 13 */
-  .rack .offset-4 { @apply col-start-17; }  /* Skip 4 semantic columns (2+4+6+8=20 tracks) = start at 21, but round to 17 */
-  .rack .offset-5 { @apply col-start-21; }  /* Skip 5 semantic columns (2+4+6+8+10=30 > 24) = wrap to next row */
-  .rack .offset-6 { @apply col-start-1; }   /* Skip 6 semantic columns (2+4+6+8+10+12=42 > 24) = wrap to next row */
+  .rack .offset-1 { @apply col-start-2; }   /* Skip col-1 (2 tracks) = start at 3 */
+  .rack .offset-2 { @apply col-start-3; }   /* Skip col-1+col-2 (2+4=6 tracks) = start at 7 */
+  .rack .offset-3 { @apply col-start-4; }  /* Skip col-1+col-2+col-3 (2+4+6=12 tracks) = start at 13 */
+  .rack .offset-4 { @apply col-start-5; }  /* Skip 4 semantic columns (2+4+6+8=20 tracks) = start at 21, but round to 17 */
+  .rack .offset-5 { @apply col-start-6; }  /* Skip 5 semantic columns (2+4+6+8+10=30 > 24) = wrap to next row */
+  .rack .offset-6 { @apply col-start-7; }   /* Skip 6 semantic columns (2+4+6+8+10+12=42 > 24) = wrap to next row */
+  .rack .offset-7 { @apply col-start-8; }
+  .rack .offset-8 { @apply col-start-9; }
+  .rack .offset-9 { @apply col-start-10; }
+  .rack .offset-10 { @apply col-start-11; }
+  .rack .offset-11 { @apply col-start-12; }
 }
 
 /* Rail Columns: Fixed widths */
