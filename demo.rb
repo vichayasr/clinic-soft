@@ -17,11 +17,11 @@ end
 get "/grid" do
   @page_title = "Grid Demo"
   @get_styles = [
-    "/npm/@psp/layout/styles/grid.css", 
+    "/npm/@psp-asia/layout/styles/grid.css", 
     "/demo/css/demo.css",
-    "/npm/@psp/debug-mode/styles/debug-mode.css"
+    "/npm/@psp-asia/debug-mode/styles/debug-mode.css"
   ]
-  @get_scripts = ["/npm/@psp/debug-mode/scripts/debug-mode.js"]
+  @get_scripts = ["/npm/@psp-asia/debug-mode/scripts/debug-mode.js"]
   erb :grid
 end
 
@@ -43,17 +43,17 @@ get "/demo/css/*" do
 end
 
 # Serve selected node_modules resources under /npm/*
-get "/npm/@psp/debug-mode/*" do
+get "/npm/@psp-asia/debug-mode/*" do
   relative = params["splat"].first
-  base_dir = File.expand_path(File.join(__dir__, "node_modules", "@psp", "debug-mode"))
+  base_dir = File.expand_path(File.join(__dir__, "node_modules", "@psp-asia", "debug-mode"))
   path = File.expand_path(File.join(base_dir, relative))
   halt 404 unless path.start_with?(base_dir) && File.file?(path)
   send_file path
 end
 
-get "/npm/@psp/layout/*" do
+get "/npm/@psp-asia/layout/*" do
   relative = params["splat"].first
-  base_dir = File.expand_path(File.join(__dir__, "node_modules", "@psp", "layout"))
+  base_dir = File.expand_path(File.join(__dir__, "node_modules", "@psp-asia", "layout"))
   path = File.expand_path(File.join(base_dir, relative))
   halt 404 unless path.start_with?(base_dir) && File.file?(path)
   send_file path
