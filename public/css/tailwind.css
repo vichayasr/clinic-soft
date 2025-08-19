@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@psp-asia/layout/styles/grid.css";
+@import "@psp-asia/layout/grid.css";
 @plugin "daisyui";
 
 /* Project entry stylesheet. Presets are provided by the plugin preset import above. */
