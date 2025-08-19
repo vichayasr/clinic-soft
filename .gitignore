@@ -14,9 +14,6 @@ tmp/
 .vscode/
 .idea/
 
-# User customizations (protected from template updates)
-views/index.erb
-
 # Build outputs
 public/css/app.css
 public/css/tailwind.css
@@ -24,5 +21,8 @@ public/css/tailwind.css
 # Environment files
 .env
 .env.local
+
+# Track demo environment
+# demo/ (commented out to allow tracking)
 
 

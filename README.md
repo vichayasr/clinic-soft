@@ -1,27 +1,14 @@
-# PSP Asia Dev Template v2.0 (Sinatra + Tailwind v4 + DaisyUI)
+# PSP Dev Template
 
-Enhanced boilerplate for Sinatra + Tailwind v4 + DaisyUI with responsive grid system and light/dark theme support.
-
-## 🆕 What's New in v2.0
-
-### Content Comparison (v1 → v2):
-
-| **Your Original (v1)** | **Enhanced Version (v2)** |
-|-------------------------|----------------------------|
-| ✅ demo-index.erb | ✅ demo.erb (renamed + enhanced) |
-| ✅ Basic header | ✅ Header + theme switcher |
-| ✅ Simple layout | ✅ Layout + theme JavaScript |
-| ✅ Basic app.rb | ✅ app.rb + new routes |
-| ✅ Plain tailwind.css | ✅ tailwind.css + DaisyUI |
-| ❌ No homepage | ✅ New index.erb homepage |
-| ❌ No themes | ✅ Light/dark theme system |
+Modern development template for Sinatra + Tailwind CSS + DaisyUI with built-in demo system.
 
 ## Features
-- ✨ **Light/Dark Theme Switcher** - Persistent theme toggle in navbar
+- 🚀 **Sinatra 4.1.1** - Lightweight Ruby web framework
+- ⚡ **Tailwind CSS v4.1.12** - Latest utility-first CSS framework
 - 🎨 **DaisyUI v5.0.50** - Beautiful UI components and semantic color system
 - 📱 **Responsive Grid System** - Rack & Rail layout containers (@psp/layout)
-- ⚡ **Tailwind CSS v4.1.12** - Latest utility-first CSS framework
-- 🚀 **Sinatra 4.1.1** - Lightweight Ruby web framework
+- 🛠️ **Debug Tools** - Development helpers (@psp/debug-mode)
+- 📋 **Demo System** - Complete showcase in `version/` directory
 
 ## Requirements
 - Ruby 3.2.8 (see `.ruby-version`)
@@ -30,23 +17,17 @@ Enhanced boilerplate for Sinatra + Tailwind v4 + DaisyUI with responsive grid sy
 ## Project Structure
 ```
 ./
-├─ .ruby-version
-├─ Gemfile
-├─ config.ru
-├─ app.rb
-├─ package.json
-├─ tailwind.config.js
-├─ public/
-│  └─ css/
-│     ├─ tailwind.css   # Tailwind input with DaisyUI plugin
-│     ├─ app.css        # Built CSS output (do not edit)
-│     └─ demo.css       # Demo-specific styles
-└─ views/
-   ├─ layout.erb        # Main layout with theme switcher
-   ├─ _header.erb       # Navbar with theme toggle
-   ├─ _footer.erb
-   ├─ index.erb         # Homepage
-   └─ demo.erb          # Grid system demo
+├─ app.rb              # Your Sinatra application (minimal starter)
+├─ demo.rb             # Demo application (run: ruby demo.rb)
+├─ package.json        # Node.js dependencies
+├─ public/css/         # CSS assets
+│  ├─ tailwind.css     # Tailwind input with DaisyUI
+│  └─ app.css          # Built CSS output (auto-generated)
+├─ views/              # Your templates (empty, customize freely)
+│  └─ .gitkeep         # Directory placeholder
+└─ demo/               # Complete demo system (examples & showcase)
+   ├─ css/demo.css     # Demo styles
+   └─ views/           # Demo templates (DaisyUI showcase, grid examples)
 ```
 
 ## Quick Start
@@ -68,88 +49,43 @@ npm run dev      # watch mode
 ```
 
 4) **Start the server**
+
+For development:
 ```bash
-ruby app.rb
+ruby app.rb              # Your minimal app (customize freely)
+```
+
+For demos:
+```bash
+ruby demo.rb             # Complete demo showcase
 ```
 
 Open http://localhost:4567/
 
-## Available Routes
-- `/` - Homepage with project overview
-- `/demo` - Grid system demonstration
+## Usage
 
-## Theme System
-The template includes a persistent light/dark theme switcher:
-- **Light Theme** - Clean, bright interface (default)
-- **Dark Theme** - Dark mode for low-light environments
-- **Theme Persistence** - User preference saved in localStorage
-- **DaisyUI Integration** - Semantic color variables that adapt to themes
+### Your Application
+- Start with minimal `app.rb` (single route)
+- Create templates in empty `views/` directory  
+- Customize everything for your project needs
 
-## Grid System
-Built with @psp/layout for responsive layouts:
+### Demo System  
+- Run `ruby demo.rb` to see complete examples
+- Enhanced DaisyUI showcase with interactive highlighting
+- Grid system demonstrations with @psp/layout
+- All demo content isolated in `demo/` directory
+
+### Grid System
 - **Rack Container** - Grid with wrapping columns (`.rack`)
-- **Rail Container** - Horizontal scrolling rows (`.rail`)
-- **Responsive** - Adapts to mobile, tablet, and desktop
-- **Offset Support** - Column positioning with `.offset-*`
+- **Rail Container** - Horizontal scrolling rows (`.rail`) 
+- **Responsive** - Mobile, tablet, desktop breakpoints
+- **Debug Mode** - Visual grid overlay for development
 
 ## Development
 - Edit CSS in `public/css/tailwind.css`
-- The build process writes to `public/css/app.css`
-- DaisyUI themes configured in `tailwind.css` with `@plugin "daisyui"`
-- Theme switcher JavaScript included in `layout.erb`
-
-## 🔄 Upgrading from v1 to v2
-
-If you're upgrading from the previous version, follow these steps:
-
-### 1. **Update Dependencies**
-```bash
-# Install new dependencies
-npm install daisyui@^5.0.50 --save-dev
-
-# Update Tailwind to v4.1.12 (if needed)
-npm install tailwindcss@^4.1.12 @tailwindcss/cli@^4.1.12 --save-dev
-```
-
-### 2. **Update CSS Configuration**
-Replace your `public/css/tailwind.css` content with:
-```css
-@import "tailwindcss";
-@import "@psp/layout/grid.css";
-@plugin "daisyui" {
-  themes: ["light", "dark", "cupcake"];
-};
-
-/* Project entry stylesheet. Presets are provided by the plugin preset import above. */
-```
-
-### 3. **Update Package Dependencies** 
-Add to your `package.json`:
-```json
-{
-  "dependencies": {
-    "@psp/debug-mode": "file:../../../psp-designertools/packages/@psp/debug-mode",
-    "@psp/layout": "file:../../../psp-designertools/packages/@psp/layout"
-  }
-}
-```
-
-### 4. **Update Routes**
-Your `app.rb` will need these changes:
-- Add homepage route: `get "/" do`
-- Rename demo route to: `get "/demo" do`
-- Update asset serving paths for `@psp/debug-mode`
-
-### 5. **Create Missing Files**
-- Create `views/index.erb` for homepage
-- Rename `demo-index.erb` to `demo.erb`
-- Add theme switcher to `_header.erb`
-
-### 6. **Build and Test**
-```bash
-npm run build
-ruby app.rb
-```
+- Build process outputs to `public/css/app.css`
+- DaisyUI themes: light, dark, cupcake available
+- PSP packages provide layout and debug utilities
 
 ## Dependencies
 - **Runtime**: Sinatra 4.1.1, Ruby 3.2.8

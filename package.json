@@ -1,15 +1,14 @@
 {
-  "name": "sinatra-template",
+  "name": "psp-dev-template",
   "private": true,
   "dependencies": {
-    
+    "@psp/debug-mode": "^1.0.0"
   },
   "scripts": {
     "dev": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/app.css --watch",
     "build": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/app.css --minify"
   },
   "devDependencies": {
-    "@psp/debug-mode": "^1.0.0",
     "@psp/layout": "^1.0.0",
     "@tailwindcss/cli": "^4.1.12",
     "daisyui": "^5.0.50",
