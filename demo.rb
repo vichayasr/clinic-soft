@@ -53,5 +53,5 @@ get "/npm/@psp-asia/debug-mode/debug-mode.js" do
 end
 
 get "/npm/@psp-asia/layout/grid.css" do
-  send_file File.join(__dir__, "node_modules", "@psp-asia", "layout", "styles", "grid.css")
+  send_file File.join(__dir__, "node_modules", "@psp-asia", "layout", "grid.css")
 end

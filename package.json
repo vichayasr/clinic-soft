@@ -9,7 +9,7 @@
     "build": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/app.css --minify"
   },
   "devDependencies": {
-    "@psp-asia/layout": "^1.0.0",
+    "@psp-asia/layout": "^1.0.1",
     "@tailwindcss/cli": "^4.1.12",
     "daisyui": "^5.0.50",
     "tailwindcss": "^4.1.12"
