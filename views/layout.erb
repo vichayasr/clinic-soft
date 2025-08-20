@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= @page_title ? "#{@page_title} · PSP-Asia" : "PSP-Asia" %></title>
+    <link rel="stylesheet" href="/css/app.css" />
+    <% (@get_styles || []).each do |href| %>
+      <link rel="stylesheet" href="<%= href %>" />
+    <% end %>
+  </head>
+  <body class="bg-white">
+
+    <%= erb :head %>
+
+    <main>
+      <%= yield %>
+    </main>
+    <%= erb :price %>
+    <%= erb :trial %>
+    <%= erb :contact %>
+    <%= erb :footer %>
+    <% (@get_scripts || []).each do |src| %>
+      <script src="<%= src %>"></script>
+    <% end %>
+  </body>
+  </html>
+
+
+

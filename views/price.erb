@@ -1,0 +1,70 @@
+<section class="relative isolate">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <h2 class="text-xl font-semibold text-gray-900">Choose Your Health Journey</h2>
+    <p class="mt-1 text-gray-700">Start free, upgrade when ready for advanced insights.</p>
+
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+      <% packages = [
+        {
+          price: "free",
+          name: "Doctor Package",
+          subtitle: "Billed annually.",
+          features: [
+            "1 Tablet device",
+            "Access to all basic features",
+            "Basic reporting and analytics",
+            "5 GB local storage",
+            "Basic chat and email support"
+          ]
+        },
+        {
+          price: "___/mth",
+          name: "Clinic Package",
+          subtitle: "Billed annually.",
+          features: [
+            "2 Desktop Web Apps & 1 Tablet",
+            "All basic & Clinic features",
+            "Clinic reporting and analytics",
+            "5 GB local & 50 GB Cloud storage",
+            "Priority chat and email support"
+          ]
+        },
+        {
+          price: "___/mth",
+          name: "Hospital Package",
+          subtitle: "Billed annually.",
+          features: [
+            "10 Desktop Web App & 50 Tablet",
+            "Basic, Clinic & Hospital features",
+            "Advanced reporting and analytics with alerts & notifications",
+            "12 GB local & Unlimited cloud storage",
+            "Personalized + priority service"
+          ]
+        }
+      ] %>
+
+      <% packages.each do |pkg| %>
+        <div class="rounded-xl bg-white ring-1 ring-gray-200 p-6 shadow-sm">
+          <div class="text-3xl font-semibold text-gray-900"><%= pkg[:price] %></div>
+          <p class="mt-1 text-sm text-blue-600 font-medium"><%= pkg[:name] %></p>
+          <p class="mt-1 text-sm text-gray-500"><%= pkg[:subtitle] %></p>
+
+          <ul class="mt-5 space-y-2 text-sm text-gray-700">
+            <% pkg[:features].each do |feature| %>
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-500"></span>
+                <%= feature %>
+              </li>
+            <% end %>
+          </ul>
+
+          <a href="#" class="mt-6 inline-flex w-full items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">
+            Get started
+          </a>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</section>
