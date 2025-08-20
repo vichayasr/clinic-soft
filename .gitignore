@@ -16,11 +16,14 @@ tmp/
 
 # Build outputs
 public/css/app.css
-public/css/tailwind.css
 
 # Environment files
 .env
 .env.local
+
+# User customizable files - users should create their own
+app.rb
+public/css/tailwind.css
 
 # Track demo environment
 # demo/ (commented out to allow tracking)
