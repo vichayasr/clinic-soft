@@ -1,35 +1,24 @@
-# Node
+# Dependencies
 node_modules/
-npm-debug.log*
-
-# macOS
-.DS_Store
-
-# Ruby
 .bundle/
-log/
-tmp/
 
-# Editors
-.vscode/
-.idea/
-
-# Build outputs
-public/css/app.css
 
 # Environment files
 .env
 .env.local
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
 
-# User customizable files - users should create their own
-app.rb
-public/css/tailwind.css
-
-# Track demo environment
-# demo/ (commented out to allow tracking)
-
-
+# Build outputs
+public/css/demo.css
+public/css/tailwind.css.template
 /demo/
 demo.rb
-
+package.json
+package-lock.json
+.ruby-version
 README.md
+.gitkeep
