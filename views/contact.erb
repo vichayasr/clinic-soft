@@ -1,55 +1,87 @@
-<div style="display: flex; gap: 20px;">
+<div id="contract" class="rack pt-10">
   <!-- Left side -->
-  <div>
-    <h3>Email</h3>
-    <p>Our friendly team is here to help.</p>
-    <p><a href="mailto:hi@untitledui.com">hi@untitledui.com</a></p>
+  <div class="col-6 grid grid-cols-2 gap-8">
+    <div>
+      <h3>Email</h3>
+      <p>Our friendly team is here to help.</p>
+      <p><a href="mailto:hi@untitledui.com">hi@untitledui.com</a></p>
+    </div>
 
-    <h3>Live chat</h3>
-    <p>Our friendly team is here to help.</p>
-    <p><a href="#">Start new chat</a></p>
+    <div>
+      <h3>Live chat</h3>
+      <p>Our friendly team is here to help.</p>
+      <p><a href="#">Start new chat</a></p>
+    </div>
 
-    <h3>Office</h3>
-    <p>Come say hello at our office HQ.</p>
-    <p>
-      100 Smith Street<br>
-      Collingwood VIC 3066 AU
-    </p>
+    <div>
+      <h3>Office</h3>
+      <p>Come say hello at our office HQ.</p>
+      <p>
+        100 Smith Street<br>
+        Collingwood VIC 3066 AU
+      </p>
+    </div>
 
-    <h3>Phone</h3>
-    <p>Mon-Fri from 8am to 5pm.</p>
-    <p><a href="tel:+15550000000">+1 (555) 000-0000</a></p>
+    <div>
+      <h3>Phone</h3>
+      <p>MON - FRI from 8am to 5pm.</p>
+      <p><a href="tel:+15550000000">+1 (555) 000-0000</a></p>
+    </div>
   </div>
+
 
   <!-- Right side (Form) -->
-  <div>
-    <form action="#" method="post">
-      <div>
-        <label for="first-name">First name*</label>
-        <input type="text" id="first-name" name="first-name" placeholder="First name" required>
-
-        <label for="last-name">Last name*</label>
-        <input type="text" id="last-name" name="last-name" placeholder="Last name" required>
+  <div id="form" class="col-6 mx-auto bg-gray-100 rounded-lg p-8">
+    <form action="#" method="post" class="space-y-4">
+      <!-- First / Last name -->
+      <div class="grid grid-cols-2 gap-4">
+        <label for="first-name" class="block text-sm font-medium">
+          First name<span class="text-blue-500">*</span>
+        </label>
+        <input type="text" placeholder="First name*" required
+               class="w-full bg-white rounded border px-3 py-2">
+        <label for="last-name" class="block text-sm font-medium">
+          Last name<span class="text-blue-500">*</span>
+        </label>
+        <input type="text" placeholder="Last name*" required
+               class="w-full bg-white rounded border px-3 py-2">
       </div>
 
-      <div>
-        <label for="email">Email*</label>
-        <input type="email" id="email" name="email" placeholder="you@company.com" required>
-      </div>
+      <!-- Email -->
+      <label for="email" class="block text-sm font-medium">
+        Email<span class="text-blue-500">*</span>
+      </label>
+      <input type="email" placeholder="you@company.com" required
+             class="w-full bg-white rounded border px-3 py-2">
 
-      <div>
-        <label for="message">Message*</label>
-        <textarea id="message" name="message" placeholder="Leave us a message..." required></textarea>
-      </div>
+      <!-- Message -->
+      <label for="message" class="block text-sm font-medium">
+        Message<span class="text-blue-500">*</span>
+      </label>
+      <textarea placeholder="Message*" required
+                class="w-full bg-white rounded border px-3 py-2"></textarea>
 
-      <div>
-        <input type="checkbox" id="agree" name="agree" required>
-        <label for="agree">You agree to our friendly privacy policy.</label>
-      </div>
+      <!-- Checkbox -->
+      <label class="flex items-center gap-2 text-sm">
+        <input type="checkbox" required class="rounded border">
 
-      <div>
-        <button type="submit">Send message</button>
-      </div>
+        <span>
+        You agree to our
+        <a href="#" class="underline-offset-1 hover:text-blue-800">
+        privacy policy
+        </a>.
+        </span>
+      </label>
+
+      <!-- Button -->
+      <button type="submit"
+              class="w-full rounded bg-blue-600 py-2 text-white hover:bg-blue-700">
+        Send message
+      </button>
     </form>
   </div>
+
+
+
+
 </div>
