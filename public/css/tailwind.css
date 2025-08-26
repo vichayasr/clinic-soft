@@ -2,6 +2,7 @@
 @import "@psp-asia/layout/grid.css";
 @plugin "daisyui";
 
+
 @layer components {
     .h1 {
         @apply text-[28px] leading-[32px] font-semibold
