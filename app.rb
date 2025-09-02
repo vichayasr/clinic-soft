@@ -8,9 +8,9 @@ set :views, File.join(__dir__, "views")
 get "/" do
   @page_title = "Home"
   @get_styles = [
-    "/npm/@psp-asia/debug-mode/debug-mode.css"
+    "node_modules/@psp-asia/layout/debug.css"
   ]
-  @get_scripts = ["/npm/@psp-asia/debug-mode/debug-mode.js"]
+  @get_scripts = ["node_modules/@psp-asia/layout/debug.js"]
   erb :"index"
 end
 

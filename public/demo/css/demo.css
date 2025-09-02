@@ -1,0 +1,349 @@
+/* 
+ * PSP Demo Styles
+ * Contains demo-specific styling that DOES NOT override @psp/layout system
+ * - Typography foundations
+ * - Grid demo column styling
+ * - Interactive demo features
+ */
+
+/* ================================
+   DAISYUI FONT SIZE SYSTEM
+   ================================ */
+
+/* DaisyUI/Tailwind Font Size Scale Variables */
+:root {
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-sm: 0.875rem;     /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
+  --font-size-2xl: 1.5rem;      /* 24px */
+  --font-size-3xl: 1.875rem;    /* 30px */
+  --font-size-4xl: 2.25rem;     /* 36px */
+  --font-size-5xl: 3rem;        /* 48px */
+  --font-size-6xl: 3.75rem;     /* 60px */
+  --font-size-7xl: 4.5rem;      /* 72px */
+  --font-size-8xl: 6rem;        /* 96px */
+  --font-size-9xl: 8rem;        /* 128px */
+}
+
+/* ================================
+   SEMANTIC TYPOGRAPHY FOUNDATIONS
+   ================================ */
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  min-width: 320px;
+  line-height: 1.6;
+  font-size: var(--font-size-base);
+  color: oklch(var(--color-base-content));
+  padding-top: 4rem; /* Add padding for fixed navbar */
+}
+
+/* Typography hierarchy using DaisyUI font sizes */
+h1 {
+  font-size: var(--font-size-6xl);
+  font-weight: 800;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  color: oklch(var(--color-base-content));
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  color: oklch(var(--color-base-content));
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+  color: oklch(var(--color-base-content));
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  color: oklch(var(--color-base-content));
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  color: oklch(var(--color-base-content));
+}
+
+h6 {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  color: oklch(var(--color-base-content));
+}
+
+p {
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: oklch(var(--color-base-content));
+}
+
+/* Text size utility classes matching DaisyUI/Tailwind */
+.text-xs { font-size: var(--font-size-xs); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-base { font-size: var(--font-size-base); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-xl { font-size: var(--font-size-xl); }
+.text-2xl { font-size: var(--font-size-2xl); }
+.text-3xl { font-size: var(--font-size-3xl); }
+.text-4xl { font-size: var(--font-size-4xl); }
+.text-5xl { font-size: var(--font-size-5xl); }
+.text-6xl { font-size: var(--font-size-6xl); }
+.text-7xl { font-size: var(--font-size-7xl); }
+.text-8xl { font-size: var(--font-size-8xl); }
+.text-9xl { font-size: var(--font-size-9xl); }
+
+section {
+  margin-bottom: 2rem;
+}
+
+/* General text color support for dark mode */
+span:not(.rack span):not(.rail span),
+div:not(.rack):not(.rail),
+code {
+  color: oklch(var(--color-base-content));
+}
+
+/* Responsive typography */
+@media (max-width: 48rem) {
+  h1 {
+    font-size: var(--font-size-4xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-2xl);
+    margin-top: 1.5rem;
+  }
+  
+  h3 {
+    font-size: var(--font-size-xl);
+  }
+}
+
+/* ================================
+   DEMO COLUMN STYLING
+   ================================ */
+
+/* Demo column layout and styling */
+.rack > [class*="col-"],
+.rail > [class*="col-"] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0.5rem;
+  min-height: 2rem;
+  border-radius: 0.25rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Demo color schemes */
+.rack > [class*="col-"] {
+  background-color: #f3e8ff;
+  border: 1px solid #d8b4fe;
+}
+
+.rail > [class*="col-"] {
+  background-color: #dbeafe;
+  border: 1px solid #60a5fa;
+}
+
+/* Content styling */
+.rack > [class*="col-"] > span {
+  font-size: 0.875rem;
+  color: #6b21a8;
+}
+
+.rail > [class*="col-"] > span {
+  font-size: 0.875rem;
+  color: #1e40af;
+}
+
+/* ================================
+   DEMO PAGE LAYOUT STRUCTURE  
+   ================================ */
+
+/* Consistent page wrapper for all demo pages */
+.demo-page {
+  min-height: 100vh;
+  background: oklch(var(--color-base-200));
+}
+
+/* Demo page header styling */
+.demo-header {
+  background: oklch(var(--color-base-100));
+  box-shadow: 0 1px 3px oklch(var(--color-base-300) / 0.12);
+  border-bottom: 1px solid oklch(var(--color-base-300));
+}
+
+/* Demo content sections */
+.demo-section {
+  margin-bottom: 5rem; /* Increased spacing between different topics */
+}
+
+/* First section gets extra top margin after hero */
+.demo-section:first-child {
+  margin-top: 2rem;
+}
+
+.demo-section h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  color: oklch(var(--color-base-content));
+}
+
+.demo-section h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+  color: oklch(var(--color-base-content));
+}
+
+.demo-section p {
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: oklch(var(--color-base-content));
+}
+
+/* Demo badge container styling */
+.demo-badge-container {
+  margin-bottom: 0.75rem;
+}
+
+.demo-badge-group {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.demo-description {
+  font-size: var(--font-size-xs);
+  opacity: 0.6;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  color: oklch(var(--color-base-content));
+}
+
+/* Demo code preview styling */
+.demo-code-preview {
+  background: oklch(var(--color-base-300));
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  border: 1px solid oklch(var(--color-base-200));
+  box-shadow: 0 10px 15px -3px oklch(var(--color-base-300) / 0.1);
+}
+
+.demo-code-preview pre {
+  margin: 0;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* ================================
+   INTERACTIVE DEMO FEATURES
+   ================================ */
+
+/* Badge highlighting system - uses DaisyUI warning colors */
+.tag-highlight {
+  background: oklch(var(--color-warning)) !important;
+  color: oklch(var(--color-warning-content)) !important;
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px oklch(var(--color-warning) / 0.3);
+}
+
+/* Demo hover effects */
+.demo-hover {
+  transition: all 0.2s ease;
+}
+
+.demo-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px oklch(var(--color-base-300) / 0.15);
+}
+
+/* ================================
+   DEBUG MODE DARK MODE FIXES
+   ================================ */
+
+/* Fix debug-mode text colors for dark mode compatibility */
+.viewport-input.viewport-input-rem {
+  color: oklch(var(--color-base-content)) !important;
+}
+
+.viewport-option {
+  color: oklch(var(--color-base-content)) !important;
+}
+
+.viewport-option.default-option {
+  color: oklch(var(--color-base-content)) !important;
+}
+
+.viewport-dropdown-menu {
+  background: oklch(var(--color-base-100)) !important;
+  border-color: oklch(var(--color-base-300)) !important;
+}
+
+.viewport-input {
+  background-color: oklch(var(--color-base-100)) !important;
+  color: oklch(var(--color-base-content)) !important;
+  border-color: oklch(var(--color-base-300)) !important;
+}
+
+/* Fix debug inspector tooltip - ensure white text on black background */
+.debug-inspector-tooltip {
+  color: white !important;
+  background-color: rgba(15, 23, 42, 0.9) !important;
+}
+
+.debug-inspector-tooltip * {
+  color: white !important;
+}
+
+.debug-inspector-tooltip .tooltip-tag {
+  color: #93c5fd !important; /* Keep blue color for tag */
+}
+
+/* White background for debug mode measurement tablets */
+.viewport-input,
+.viewport-input.viewport-input-rem {
+  background-color: white !important;
+  color: #374151 !important;
+  border: 1px solid #d1d5db !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
