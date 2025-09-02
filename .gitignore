@@ -22,3 +22,4 @@ package-lock.json
 .ruby-version
 README.md
 .gitkeep
+app.rb.template
