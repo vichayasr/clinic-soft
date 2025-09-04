@@ -3,8 +3,8 @@
 @import "@psp-asia/layout/grid.css";
 
 /* Custom styles */
-@import "colors.css.template";
-@import "typography.css.template";
+@import "./colors.css";
+@import "./typography.css";
 
 /* DaisyUI plugin */
 @plugin "daisyui" {

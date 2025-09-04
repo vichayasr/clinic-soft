@@ -14,6 +14,11 @@ get "/" do
   erb :"index"
 end
 
+get "/daisyui" do
+  @page_title = "DaisyUI Components"
+  erb :"demo/daisyui"
+end
+
 # Serve assets from the template-level plugins directory at /plugins/*
 get "/plugins/*" do
   relative = params["splat"].first

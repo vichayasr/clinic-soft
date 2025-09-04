@@ -1,28 +1,55 @@
-<header class="rack flex items-center justify-between p-6 bg-white shadow">
-
-  <div id="company-identity" class="col-2">
-    <a href="#" class="flex flex-row items-center gap-4 h-full">
-      <img src="/img/logo.svg" alt="PSP Asia Logo">
+<header class="navbar bg-base-100 shadow-sm">
+  
+  <!-- Mobile menu dropdown -->
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
+      </div>
+      <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+        <li><a href="#">Health Me</a></li>
+        <li><a href="#">Clinic Software</a></li>
+        <li><a href="#">Home Care</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </div>
+    
+    <!-- Logo/Brand -->
+    <a href="/" class="btn btn-ghost">
+      <img src="/img/logo.svg" alt="PSP Asia Logo" class="h-8">
+      <span class="hidden sm:inline">PSP-Asia</span>
     </a>
   </div>
 
-
-  <nav id="navbar" class="col-8">
-    <ul class="flex justify-center items-center space-x-8">
-      <li><a href="#" class="px-3 py-2 text-nowrap">Health Me</a></li>
-      <li><a href="#" class="px-3 py-2 text-nowrap">Clinic Software</a></li>
-      <li><a href="#" class="px-3 py-2 text-nowrap">Home Care</a></li>
-      <li><a href="#" class="px-3 py-2 text-nowrap">Contact</a></li>
-      <li><a href="#" class="px-3 py-2 text-nowrap">Support</a></li>
+  <!-- Desktop navigation -->
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li><a href="#">Health Me</a></li>
+      <li><a href="#">Clinic Software</a></li>
+      <li><a href="#">Home Care</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Support</a></li>
     </ul>
+  </div>
 
-    <!-- Language-->
-    <div id ="lang" class="col-2">
-      <a href="#" class="px-3 py-2">EN</a>
-
+  <!-- Language selector -->
+  <div class="navbar-end">
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost">
+        <span>EN</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+      <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] mt-3 w-32 p-2 shadow">
+        <li><a href="#">EN</a></li>
+        <li><a href="#">TH</a></li>
+        <li><a href="#">JP</a></li>
+      </ul>
     </div>
-
-  </nav>
-
+  </div>
 
 </header>
